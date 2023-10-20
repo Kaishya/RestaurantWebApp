@@ -1,0 +1,194 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+body {
+    /*    background-color: #FFFDF8;
+*/
+    background-color: #F2F9F1;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+/*.homeSlides {
+    background-image: url('https://www.tastingtable.com/img/gallery/20-delicious-indian-dishes-you-have-to-try-at-least-once/intro-1645057933.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 10px 100px 10px 10px;
+
+}
+*/
+
+.image-container {
+    background-image: url("https://static.toiimg.com/photo/87888077.cms");
+    background-size: cover;
+    position: relative; /* Needed to position the cutout text in the middle of the image */
+    height: 400px; /* Some height */
+    background-position: center center;
+}
+
+.text {
+    background-color: white;
+    color: darkolivegreen; /*either darkolivegreen or dark blue*/
+    font-size: 8vw; /* Responsive font size */
+    font-weight: bold;
+    margin: 0 auto; /* Center the text container */
+    padding: 10px;
+    width: 70%;
+    text-align: center; /* Center text */
+    position: absolute; /* Position text */
+    top: 35%; /* Position text in the middle */
+    left: 50%; /* Position text in the middle */
+    transform: translate(-50%, -60%); /* Position text in the middle */
+    mix-blend-mode: screen; /* This makes the cutout text possible */
+    z-index: 2;
+    border-radius: 25px 5px 25px 5px;
+}
+.slider {
+    overflow: hidden;
+    background-size: cover;
+    position: relative; /* Needed to position the cutout text in the middle of the image */
+    height: 400px; /* Some height */
+    background-position: center center;
+    z-index: 0;
+/*    border: double 4px black;
+*/}
+
+.slider .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  animation: slide 15s infinite;
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
+    .slider .slide:nth-child(1) {
+        background-image: url("https://static.toiimg.com/photo/87888077.cms");
+        animation-delay: -0s;
+    }
+
+    .slider .slide:nth-child(2) {
+        background-image: url("https://holirestaurants.com/wp-content/uploads/2020/11/IMG_0505-scaled.jpg");
+        animation-delay: -3s;
+    }
+
+    .slider .slide:nth-child(3) {
+        background-image: url('https://assets.vogue.com/photos/63d169f727f1d528635b4287/16:9/w_3631,h_2042,c_limit/GettyImages-1292563627.jpg');
+        animation-delay: -6s;
+    }
+
+    .slider .slide:nth-child(4) {
+        background-image: url('https://www.harighotra.co.uk/images/papdi_chaat_Landscape.jpg');
+        animation-delay: -9s;
+    }
+
+    .slider .slide:nth-child(5) {
+        background-image: url('https://res.cloudinary.com/hz3gmuqw6/image/upload/c_fill,q_auto,w_750/f_auto/tk-traditional-indian-foods-to-taste-in-2022-phpEXAXNS');
+        animation-delay: -12s;
+    }
+
+@keyframes slide {
+  0%, 15%, 100% {
+    transform: translateX(0);
+    animation-timing-function: ease;
+  }
+  20% {
+    transform: translateX(-100%);
+    animation-timing-function: step-end;
+  }
+  95% {
+    transform: translateX(100%);
+    animation-timing-function: ease;
+  }
+}
+
+
+/*Specials Section*/
+
+.dishSelection{
+    text-align:center;
+    margin-bottom: 50px;
+}
+.dishSelection h2{
+    font-size: 2rem;
+    font-weight:500;
+}
+
+.dishWrapper{
+    display:flex;
+    align-items: center;
+    column-gap: 1.5rem;
+}
+
+.dishItem {
+    width: 33%;
+    display: flex;
+    column-gap: 1rem;
+    cursor: pointer;
+    background: #E3F1E0;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.dishImage{
+    width:20%;
+    height: 100%;
+    border-radius:50%;
+}
+
+.dishImage img{
+    width: 100%;
+    border-radius:50%;
+}
+
+.dishContentBottom {
+    display: fixed;
+    align-items: center;
+    justify-content: space-between;
+/*    margin-top: 10px
+*/}
+
+.dishPrice{
+    font-weight:600;
+    font-size: 1.2rem;
+}
+
+.dishContent{
+    width:75%;
+}
+
+.addToCart{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+.section{
+    transition: transform 1s, opacity 1s;
+}
+
+.section_hidden {
+    opacity: 0;
+    transform: translateY(8rem);
+}
