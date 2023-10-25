@@ -8,8 +8,7 @@ html {
   }
 }
 body {
-    /*    background-color: #FFFDF8;
-*/
+    /*    background-color: #FFFDF8;*/
     background-color: #F2F9F1;
 }
 html {
@@ -20,40 +19,44 @@ html {
 body {
   margin-bottom: 60px;
 }
-/*.homeSlides {
-    background-image: url('https://www.tastingtable.com/img/gallery/20-delicious-indian-dishes-you-have-to-try-at-least-once/intro-1645057933.jpg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    padding: 10px 100px 10px 10px;
-
+h1 {
+    font-family: 'Dosis', sans-serif;
 }
-*/
-
-.image-container {
-    background-image: url("https://static.toiimg.com/photo/87888077.cms");
-    background-size: cover;
-    position: relative; /* Needed to position the cutout text in the middle of the image */
-    height: 400px; /* Some height */
-    background-position: center center;
+h2 {
+    font-family: 'Dancing Script', cursive;
+}
+h3 {
+    font-family: 'Arvo', serif;
+    font-size: 2vw;
+}
+li {
+    font-family: 'Lexend', sans-serif;
 }
 
+
+/*Using this tutorial for the main text https://www.w3schools.com/howto/howto_css_cutout_text.asp*/
 .text {
     background-color: white;
-    color: darkolivegreen; /*either darkolivegreen or dark blue*/
+    color: darkgreen; /*either darkolivegreen or dark blue*/
     font-size: 8vw; /* Responsive font size */
     font-weight: bold;
-    margin: 0 auto; /* Center the text container */
+    margin: 0 auto;
     padding: 10px;
     width: 70%;
-    text-align: center; /* Center text */
-    position: absolute; /* Position text */
-    top: 35%; /* Position text in the middle */
-    left: 50%; /* Position text in the middle */
-    transform: translate(-50%, -60%); /* Position text in the middle */
+    text-align: center;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -60%);
     mix-blend-mode: screen; /* This makes the cutout text possible */
     z-index: 2;
     border-radius: 25px 5px 25px 5px;
 }
+
+
+
+
+/* Using this tutorial to make the slide animation https://unused-css.com/blog/css-only-background-slider/*/
 .slider {
     overflow: hidden;
     background-size: cover;
@@ -61,8 +64,9 @@ body {
     height: 400px; /* Some height */
     background-position: center center;
     z-index: 0;
-/*    border: double 4px black;
-*/}
+    /*    border: double 4px black;
+*/
+}
 
 .slider .slide {
   position: absolute;
@@ -78,18 +82,19 @@ body {
 }
 
     .slider .slide:nth-child(1) {
-        background-image: url("https://static.toiimg.com/photo/87888077.cms");
+        background-image: url('https://assets.vogue.com/photos/63d169f727f1d528635b4287/16:9/w_3631,h_2042,c_limit/GettyImages-1292563627.jpg');
         animation-delay: -0s;
     }
 
     .slider .slide:nth-child(2) {
-        background-image: url("https://holirestaurants.com/wp-content/uploads/2020/11/IMG_0505-scaled.jpg");
+        background-image: url("https://www.sidechef.com/recipe/ce0042ee-f97c-40c8-a052-4fddd8621630.jpg?d=1408x1120");
         animation-delay: -3s;
     }
 
     .slider .slide:nth-child(3) {
-        background-image: url('https://assets.vogue.com/photos/63d169f727f1d528635b4287/16:9/w_3631,h_2042,c_limit/GettyImages-1292563627.jpg');
-        animation-delay: -6s;
+        background-image: url("https://holirestaurants.com/wp-content/uploads/2020/11/IMG_0505-scaled.jpg");
+/*        background-image: url('https://assets.vogue.com/photos/63d169f727f1d528635b4287/16:9/w_3631,h_2042,c_limit/GettyImages-1292563627.jpg');
+*/        animation-delay: -6s;
     }
 
     .slider .slide:nth-child(4) {
@@ -119,7 +124,7 @@ body {
 
 
 /*Specials Section*/
-
+/*From tutorial   https://www.youtube.com/watch?v=Q3MPM7fBO5U*/ 
 .dishSelection{
     text-align:center;
     margin-bottom: 50px;
@@ -146,7 +151,7 @@ body {
 }
 
 .dishImage{
-    width:20%;
+    width: 30%;
     height: 100%;
     border-radius:50%;
 }
@@ -160,12 +165,14 @@ body {
     display: fixed;
     align-items: center;
     justify-content: space-between;
-/*    margin-top: 10px
-*/}
+    margin-top: 10px
+
+}
 
 .dishPrice{
     font-weight:600;
     font-size: 1.2rem;
+    display:inline;
 }
 
 .dishContent{
@@ -191,4 +198,10 @@ body {
 .section_hidden {
     opacity: 0;
     transform: translateY(8rem);
+}
+
+.remix {
+    width: 24px;
+    height: 24px;
+    fill: #333;
 }
