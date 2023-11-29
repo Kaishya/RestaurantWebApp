@@ -15,7 +15,11 @@ namespace RestaurantWebApp.Pages
 			_logger = logger;
 		}
 
-	/*	private readonly RestaurantWebAppContext _context;
+		private readonly RestaurantWebAppContext _db;
+
+
+		/*
+		private readonly RestaurantWebAppContext _context;
 
 		public IndexModel(RestaurantWebAppContext context)
 		{
@@ -23,10 +27,11 @@ namespace RestaurantWebApp.Pages
 		}
 
 		public IList<FoodItem> FoodItem { get; set; } = default!;
-		
+
 		public void OnGet()
 		{
 			FoodItem = _context.FoodItems.FromSqlRaw("Select * FROM FoodItem").ToList();
 		}*/
+
 	}
 }
