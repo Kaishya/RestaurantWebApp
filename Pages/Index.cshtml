@@ -83,3 +83,30 @@
 
 
 </div>
+
+@* 
+<div class=" text-center">
+    <h2 class="display-4">Our Menu Items</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var tblFoodItems in Model.FoodItem)
+            {
+                <tr>
+                    <td>@tblFoodItems.ID</td>
+                    <td>@tblFoodItems.Item_name</td>
+                    <td>@tblFoodItems.Item_desc</td>
+                    <td>@tblFoodItems.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div> *@

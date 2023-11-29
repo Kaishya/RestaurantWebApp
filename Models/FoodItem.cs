@@ -1,12 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace RestaurantWebApp.wwwroot.Models
+namespace RestaurantWebApp.Models
 {
-    public class FoodItems
+    public class FoodItem
     {
         [Key]
-        public int ID { get;set; }
+        public int ID { get; set; }
         [StringLength(30)]
         public string Item_name { get; set; }
         [StringLength(225)]
@@ -18,3 +18,4 @@ namespace RestaurantWebApp.wwwroot.Models
         public Nullable<decimal> Price { get; set; }
     }
 }
+
