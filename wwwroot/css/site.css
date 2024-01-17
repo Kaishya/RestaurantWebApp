@@ -45,8 +45,10 @@ li {
     width: 70%;
     text-align: center;
     position: absolute;
-    top: 35%;
-    left: 50%;
+   /* top: 25%;
+    left: 50%;*/
+   top: 25vw;
+   left:50vw;
     transform: translate(-50%, -60%);
     mix-blend-mode: screen; /* This makes the cutout text possible */
     z-index: 2;
@@ -62,6 +64,7 @@ li {
     background-size: cover;
     position: relative; /* Needed to position the cutout text in the middle of the image */
     height: 400px; /* Some height */
+    height: 35vw;
     background-position: center center;
     z-index: 0;
     /*    border: double 4px black;

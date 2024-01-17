@@ -4,6 +4,8 @@
     ViewData["Title"] = "Home Page";
     <link type="image/png" sizes="16x16" rel="icon" href=".../icons8-house-16.png">
     <link type="image/png" sizes="96x96" rel="icon" href=".../icons8-house-96.png">
+    var isMemberRole = User.IsInRole("Member");
+    var isAdminRole = User.IsInRole("Admin");
 }
 
 <div class="text-center">
@@ -19,10 +21,12 @@
     </div>
 
         <h1 class="display-4">Welcome to Mathu Khai Che </h1>
-
+    <p>Is Admin: @isAdminRole</p>
+    <p>Is Member: @isMemberRole</p>
 
 @* Specials Section *@
-@*  Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@    
+@*  Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@
+
     <section class="section">
         <div class="container">
             <div class="dishSelection">
@@ -85,7 +89,8 @@
 </div>
 
 
-@* 
+
+
 <div class=" text-center">
     <h2 class="display-4">Our Menu Items</h2>
     <table>
@@ -95,6 +100,9 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FoodItem[0].ImageData)
+                </th>
             </tr>
         </thead>
 
@@ -106,8 +114,31 @@
                     <td>@tblFoodItems.Item_name</td>
                     <td>@tblFoodItems.Item_desc</td>
                     <td>@tblFoodItems.Price</td>
+               
+                @{
+                    try
+                    {
+                        <td>
+                                <img src="@string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(tblFoodItems.ImageData))" alt="@tblFoodItems.ImageDescription" />
+                        </td>
+                    }
+                    catch
+                    {
+                        <td>
+                            <img class="img-thumb" src="/Images/no-image.png" alt="No Image provided" />
+                        </td>
+                    }
+                }
+            
+                    
                 </tr>
             }
         </tbody>
     </table>
-</div> *@
+</div>
+
+<h2>Search</h2>
+<form method = "post">
+    <div>Search <input asp-for = "Search"/> </div>
+    <button type="submit" asp-page-handler="Search">Submit</button>
+</form>

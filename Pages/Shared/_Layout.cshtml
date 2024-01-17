@@ -36,17 +36,19 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Contact">Contact Us</a>
-                        </li>                    
+                        </li>    
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Index">Admin Menu</a>
+                        </li>
                        
                     </ul>
                     <ul class="nav navbar-nav navbar-right ">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Checkout">Checkout</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Login">Login</a>
-                        </li>
+                        
                     </ul>
+                    <partial name="_LoginPartial"/>
                 </div>
             </div>
         </nav>

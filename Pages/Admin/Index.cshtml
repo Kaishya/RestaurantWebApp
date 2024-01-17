@@ -1,12 +1,12 @@
 ﻿@page
+@* @model RestaurantWebApp.Pages.Admin.IndexModel *@
 @model RestaurantWebApp.Pages.Menu.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
+<h1>Admin Pages</h1>
+<p>Requires Admin to Acess</p>
 <p>
     <a asp-page="Create">Create New</a>
 </p>
@@ -65,11 +65,11 @@
                         </td>
                     }
                 }
-          @*   <td>
+            <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td> *@
+            </td>
         </tr>
 }
     </tbody>
