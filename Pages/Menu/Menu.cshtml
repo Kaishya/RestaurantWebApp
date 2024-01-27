@@ -5,3 +5,18 @@
 
 }
 <h1>@ViewData["Title"]</h1>
+
+<div class="flex-container">
+	@foreach (var item in Model.FoodItem)
+	{
+		<div>
+			@Html.DisplayFor(modelItem => item.Item_name)
+			@Html.DisplayFor(modelItem => item.Item_desc)
+			@Html.DisplayFor(modelItem => item.Price)
+
+			<p>@Html.DisplayFor(modelItem => item.Vegetarian) ? "Vegetarian" : "")</p>
+
+
+		</div>
+	}
+</div>

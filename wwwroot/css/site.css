@@ -193,18 +193,48 @@ li {
     border-radius: 5px;
 }
 
-
-.section{
+section {
+    padding: 5% 0%;
+}
+.section {
     transition: transform 1s, opacity 1s;
 }
-
 .section_hidden {
     opacity: 0;
     transform: translateY(8rem);
 }
+
+
 
 .remix {
     width: 24px;
     height: 24px;
     fill: #333;
 }
+.naver {
+    padding-bottom: 5%
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+
+    .flex-container > div {
+        border-radius: 5px;
+        width: 500px;
+        margin: 10px;
+        padding: 5px;
+        text-align: center;
+        line-height: 25px;
+        font-size: 10px;
+        -webkit-transition-duration: 1.4s;
+        transition-duration: 1.4s;
+    }
+
+        .flex-container > div:hover {
+            background-color: #bcc4bd;
+            color: black;
+        }

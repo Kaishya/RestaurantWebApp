@@ -11,7 +11,6 @@
 <div class="text-center">
 
     <div class="text">Mathu Khai Che</div>
-    
     <div class="slider">
         <div class="slide"> </div>
         <div class="slide"></div>
@@ -19,11 +18,10 @@
         <div class="slide"></div>
         <div class="slide"> </div>
     </div>
-
         <h1 class="display-4">Welcome to Mathu Khai Che </h1>
     <p>Is Admin: @isAdminRole</p>
     <p>Is Member: @isMemberRole</p>
-
+</div>
 @* Specials Section *@
 @*  Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@
 
@@ -34,61 +32,34 @@
                     <h2>Our Specialties</h2>
                 </div>
             <div  class="dishWrapper">
+
+                @foreach (var tblFoodItems in Model.FoodItem.Take(3)){
                 <div class="dishItem">
                     <div class="dishImage">
                             <img src="https://www.whiskaffair.com/wp-content/uploads/2019/05/Dahi-Puri-2-3.jpg" alt="pani puri" />
                     </div>
                     <div class="dishContent">
-                        <h3>Refreshing Pani Puri</h3>
+                            <h3>@tblFoodItems.Item_name</h3>
                     </div>
                     <div class="dishContentBottom">
-                        <span class="dishPrice">$6.00</span>
+                            <span class="dishPrice">@tblFoodItems.Price?.ToString("C2")</span>
                             @* <span class="addToCart">
                                 <i class="ri-shopping-cart-2-fill"></i>
                                 </span> *@
                     </div>
                 </div>
-
-                    <div class="dishItem">
-                        <div class="dishImage">
-                            <img src="https://www.mygingergarlickitchen.com/wp-content/rich-markup-images/1x1/1x1-samosa-chaat.jpg" alt="Samosa Chaat" />
-                        </div>
-                        <div class="dishContent">
-                            <h3>Samosa Chaat</h3>
-                        </div>
-                        <div class="dishContentBottom">
-                            <span class="dishPrice">$8.00</span>
-                            @* <span class="addToCart">
-                            <i class="ri-shopping-cart-2-fill"></i>
-                            </span> *@
-                        </div>
-                    </div>
-
-                    <div class="dishItem">
-                        <div class="dishImage">
-                            <img src="https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2FEdit%2F2023-03-papdi-chaat%2Fpapdi-chaat-01" alt="Papdi Chaat" />
-                        </div>
-                        <div class="dishContent">
-                            <h3> Papdi Chaat</h3>
-                        </div>
-                        <div class="dishContentBottom">
-                            <span class="dishPrice">$6.00</span>
-                            @* <span class="addToCart">
-                            <i class="ri-shopping-cart-2-fill"></i>
-                            </span> *@
-                        </div>
-                    </div>
+                }
 
             </div>
             </div>
         </div>
-
+        <button>Full Menu</button>
     </section>
 
 
-</div>
 
-
+@* 
+<section class="section">
 
 
 <div class=" text-center">
@@ -136,9 +107,30 @@
         </tbody>
     </table>
 </div>
+</section>
+ *@
 
-<h2>Search</h2>
-<form method = "post">
-    <div>Search <input asp-for = "Search"/> </div>
-    <button type="submit" asp-page-handler="Search">Submit</button>
-</form>
+
+
+
+<section class="section">
+    <h2>Our Story</h2>
+    <p> dkhskjhf;iuey uryb  uyurbcyiuriebyuyrb rbyaoiubyriyaeurbyioa iurayb riuaoybr o8ayrb yapiuryiuea uieyr
+        euki ryiuyriury  u tyuiayr  uyilag tu ai;tylktu utayktu ykahugkj 
+    </p>
+    <button>About Us</button>
+
+</section>
+
+
+<section class ="section"> 
+    <p>2357 ravenstreet, Douglas, IM9</p>
+    <p>call us: 07624 090812</p>
+
+	<h2>Search</h2>
+	<form method="post">
+		<div>Search <input asp-for="Search" /> </div>
+		<button type="submit" asp-page-handler="Search">Submit</button>
+	</form>
+
+</section>

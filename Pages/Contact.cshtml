@@ -1,9 +1,39 @@
 ﻿@page
-@model RestaurantWebApp.Pages.ContactModel
+@model IndexModel
 @{
     ViewData["Title"] = "Contact Page";
 }
+
+<form method="post">
+
+<section class="section">
 <div class="text-center">
     <h1 class="display-4">Contact Us </h1>
     <p>Email <a></a>.</p>
 </div>
+</section>
+
+
+
+
+@foreach (var tblFoodItems in Model.FoodItem.Take(3))
+{
+
+
+    <div class="dishItem">
+        <div class="dishImage">
+            <img src="https://www.whiskaffair.com/wp-content/uploads/2019/05/Dahi-Puri-2-3.jpg" alt="pani puri" />
+        </div>
+        <div class="dishContent">
+            <h3>@tblFoodItems.Item_name</h3>
+        </div>
+        <div class="dishContentBottom"> 
+                <span class="dishPrice"> @tblFoodItems.Price?.ToString("C2")</span>
+@*             <button type="submit" asp-page-handler="Buy" asp-route-itemID="@tblFoodItems.ID">
+                Add To Basket
+            </button> *@
+        </div>
+    </div>
+
+}
+</form>

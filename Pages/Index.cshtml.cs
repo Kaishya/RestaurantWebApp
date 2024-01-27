@@ -7,7 +7,7 @@ using RestaurantWebApp.Models;
 
 namespace RestaurantWebApp.Pages
 {
-	[Authorize (Roles = "Admin, Member")]
+	
 	public class IndexModel : PageModel
 	{
 		private readonly ILogger<IndexModel> _logger;
