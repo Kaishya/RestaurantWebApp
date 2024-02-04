@@ -235,6 +235,108 @@ section {
     }
 
         .flex-container > div:hover {
-            background-color: #bcc4bd;
+            background-color: #e6f7e9;
             color: black;
         }
+
+
+.vegan {
+    color: white;
+    background-color: #B6D8A4;
+    padding: 5px;
+  /*  margin:5px;*/
+    border-radius: 4px;
+}
+.circle-add:before {
+    content: '\F244';
+}
+
+.main{
+    width: 1170px;
+    margin: 0 auto;
+    padding: 100px 0 inherit;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:60px;
+}
+.title h2{
+    font-size:40px;
+    position:relative;
+    padding-bottom: 20px;
+    margin-bottom:20px
+}
+.title h2:after{
+    position:absolute;
+    content: "";
+    width: 80px;
+    height: 2px;
+    background-color:seagreen;
+    left:50%;
+    transform:translateX(-50%)
+
+}
+.foods{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+.oneItem{
+    flex-basis: 48%;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 30px;
+    margin-bottom:30px;
+    display:flex;
+    align-items: center;
+
+}
+
+.oneItem:nth-child(5), .oneItem:nth-child(6){
+    border-bottom:0;
+}
+.oneItem:hover{
+    border-color:seagreen;
+}
+
+.oneItem img{
+    max-width:120px;
+    border-radius:50%;
+    border:1px solid #ddd;
+    padding:3px;
+    margin-right:20px;
+    transition: .3s;
+}
+
+.oneItem:hover img{
+    border-radius:0;
+}
+
+.itemInfo h3{
+    font-size:22px;
+    border-bottom:1px dashed #ddd;
+    padding-bottom:10px;
+    margin-bottom:10px;
+}
+
+.itemInfo h3 span {
+    float:right;
+    color: orangered;
+    font-style:italic;
+}
+.itemInfo button {
+    float:right;
+}
+
+@media only screen and (max-width: 800px){
+    .main{
+        width:350px;
+    }
+    .oneItem{
+        flex-basis:100%;
+        flex-direction:column;
+    }
+    .oneItem img{
+        margin-bottom:30px;
+    }
+}

@@ -8,10 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using RestaurantWebApp.Data;
 using RestaurantWebApp.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RestaurantWebApp.Pages.Menu
 {
-    public class IndexModel : PageModel
+	[Authorize(Roles = "Admin")]
+	public class IndexModel : PageModel
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RestaurantWebAppContext _db;

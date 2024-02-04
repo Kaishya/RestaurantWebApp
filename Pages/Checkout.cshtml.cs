@@ -4,11 +4,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using RestaurantWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using RestaurantWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace RestaurantWebApp.Pages
 {
-    public class CheckoutModel : PageModel
+	[Authorize(Roles = "Admin, Member")]
+
+	public class CheckoutModel : PageModel
     {
 
 		private readonly RestaurantWebAppContext _db;
@@ -31,7 +34,7 @@ namespace RestaurantWebApp.Pages
             Items = _db.CheckoutItems.FromSqlRaw(
                 "SELECT FoodItem.ID, FoodItem.Price, "+
                 "FoodItem.Item_name, "+
-                "BasketItems.BasketID, BasketItems.Quantity "+
+				"BasketItems.BasketID, BasketItems.Quantity " +
                 "FROM FoodItem INNER JOIN BasketItems "+
                 "On FoodItem.ID = BasketItems.StockID "+
                 "WHERE BasketID = {0}", customer.BasketID

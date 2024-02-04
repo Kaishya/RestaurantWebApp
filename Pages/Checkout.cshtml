@@ -30,9 +30,10 @@ else
 					var subtotal = item.Price * item.Quantity;
 					<tr>
 						<td>@item.Item_Name</td>
-						<()td>@item.Price.ToString()td>
+						<td>@item.Price.ToString("C")</td>
 						<td>@item.Quantity</td>
-						<td>@subtotal.ToString()</td>
+						<td>@subtotal.ToString("C")</td>
+
 					</tr>
 				}
 			</tbody>

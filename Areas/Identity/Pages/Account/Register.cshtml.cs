@@ -151,7 +151,8 @@ namespace RestaurantWebApp.Areas.Identity.Pages.Account
                     else
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
-                        NewBasket();
+						//await _userManager.AddToRoleAsync(user, "Member");
+						NewBasket();
                         NewCustomer(Input.Email);
                         return LocalRedirect(returnUrl);
                     }

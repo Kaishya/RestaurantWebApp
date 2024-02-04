@@ -4,19 +4,50 @@
 	ViewData["Title"] = "Menu";
 
 }
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
 <h1>@ViewData["Title"]</h1>
 
-<div class="flex-container">
+@* <div class="flex-container">
 	@foreach (var item in Model.FoodItem)
 	{
 		<div>
 			@Html.DisplayFor(modelItem => item.Item_name)
 			@Html.DisplayFor(modelItem => item.Item_desc)
 			@Html.DisplayFor(modelItem => item.Price)
-
-			<p>@Html.DisplayFor(modelItem => item.Vegetarian) ? "Vegetarian" : "")</p>
-
+			@if (item.Vegetarian.HasValue && item.Vegetarian.Value)
+			{
+				<i class='fas fa-seedling fa-3x vegan'></i>
+			}
+			<button type="button" class="btn btn-outline-dark"><span class="bi bi-cart3"></span> Add To Cart</button>
 
 		</div>
 	}
+</div>
+ *@
+<div class="main">
+	<div class="title">
+		<h2>Our Menu</h2>
+		<p>a mix of traditional and street foods</p>
+	</div>
+	<div class="foods">
+	@foreach (var item in Model.FoodItem)
+	{
+		<div class="oneItem">
+			@* <div class="oneItemImg">@Html.DisplayFor(modelItem => item.ImageData)</div> *@
+			<div class="itemInfo"> 
+				<h3>@Html.DisplayFor(modelItem => item.Item_name)
+						<span>@Html.DisplayFor(modelItem => item.Price)</span>
+				</h3>
+					<p>@Html.DisplayFor(modelItem => item.Item_desc) </p>
+
+					<i class='fas fa-seedling fa-2x vegan'></i>
+					<i class="bi bi-fire"></i>
+					<form method="post">
+					<button type="submit" asp-page-handler="Buy" asp-route-itemID="@item.ID" class="btn btn-outline-dark"><span class="bi bi-cart3"></span> Add To Cart</button>
+					</form>
+			</div>
+		</div>
+	}
+	</div>
 </div>
