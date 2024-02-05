@@ -6,46 +6,50 @@
 }
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
-<h1>@ViewData["Title"]</h1>
+@* <h1>@ViewData["Title"]</h1> *@
 
-@* <div class="flex-container">
-	@foreach (var item in Model.FoodItem)
-	{
-		<div>
-			@Html.DisplayFor(modelItem => item.Item_name)
-			@Html.DisplayFor(modelItem => item.Item_desc)
-			@Html.DisplayFor(modelItem => item.Price)
-			@if (item.Vegetarian.HasValue && item.Vegetarian.Value)
-			{
-				<i class='fas fa-seedling fa-3x vegan'></i>
-			}
-			<button type="button" class="btn btn-outline-dark"><span class="bi bi-cart3"></span> Add To Cart</button>
-
-		</div>
-	}
-</div>
- *@
 <div class="main">
 	<div class="title">
-		<h2>Our Menu</h2>
+		<h2 class="pagetopper">Our Menu</h2>
 		<p>a mix of traditional and street foods</p>
 	</div>
 	<div class="foods">
 	@foreach (var item in Model.FoodItem)
 	{
 		<div class="oneItem">
-			@* <div class="oneItemImg">@Html.DisplayFor(modelItem => item.ImageData)</div> *@
+				@if (item.ImageData != null && item.ImageData.Length > 0)
+				{
+					<img src="@($"data:image/jpg;base64,{Convert.ToBase64String(item.ImageData)}")" alt="@item.ImageDescription" />
+				}
+				else
+				{
+					<img class="img-thumb" src="/Images/no-image.png" alt="No Image provided" />
+				}
 			<div class="itemInfo"> 
 				<h3>@Html.DisplayFor(modelItem => item.Item_name)
+						<i class='fas fa-seedling fa-2xs vegan'></i>
 						<span>@Html.DisplayFor(modelItem => item.Price)</span>
 				</h3>
 					<p>@Html.DisplayFor(modelItem => item.Item_desc) </p>
 
-					<i class='fas fa-seedling fa-2x vegan'></i>
+					@* <i class='fas fa-seedling fa-2x vegan'></i> *@
 					<i class="bi bi-fire"></i>
 					<form method="post">
-					<button type="submit" asp-page-handler="Buy" asp-route-itemID="@item.ID" class="btn btn-outline-dark"><span class="bi bi-cart3"></span> Add To Cart</button>
+						@if (User.IsInRole("Member") || User.IsInRole("Admin"))
+						{
+							<button type="submit" asp-page-handler="Buy" asp-route-itemID="@item.ID" class="btn btn-outline-dark"><span class="bi bi-cart3"></span> Add To Cart</button>
+
+						}
+						else
+						{
+							<a href="/Identity/Account/Login" class="btn btn-outline-dark float-right">
+								<span class="bi bi-cart3"></span> Add To Cart (Login required)
+							</a>
+
+						}
 					</form>
+
+					
 			</div>
 		</div>
 	}

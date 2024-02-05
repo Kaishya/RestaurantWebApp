@@ -340,3 +340,17 @@ section {
         margin-bottom:30px;
     }
 }
+
+
+.square-menu {
+    width: 100px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    object-fit: cover; /* This property ensures the image covers the entire container */
+}
+
+.pagetopper{
+    margin-top:25px
+}
+.float-right {
+    float: right;
+}

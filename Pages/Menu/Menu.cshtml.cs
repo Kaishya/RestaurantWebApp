@@ -8,7 +8,7 @@ using RestaurantWebApp.Models;
 
 namespace RestaurantWebApp.Pages.Menu
 {
-    [Authorize(Roles = "Member")]
+   // [Authorize(Roles = "Member")]
 
     public class MenuModel : PageModel
     {
