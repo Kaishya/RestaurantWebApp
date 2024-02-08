@@ -16,6 +16,7 @@
 	<div class="foods">
 	@foreach (var item in Model.FoodItem)
 	{
+		//Start of adapted code Nahian, 2023
 		<div class="oneItem">
 				@if (item.ImageData != null && item.ImageData.Length > 0)
 				{
@@ -52,6 +53,7 @@
 					
 			</div>
 		</div>
+		//end of adapted code
 	}
 	</div>
 </div>

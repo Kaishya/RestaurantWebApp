@@ -5,7 +5,10 @@
 }
 @using RestaurantWebApp.Data
 @using Microsoft.Extensions.Options
-
+<head>
+	<!-- Add this in the head section of your Checkout.cshtml file -->
+	<script src="https://js.stripe.com/v3/"></script>
+</head>
 <h1>@ViewData["Title"]</h1>
 
 @if (Model.Items.Count == 0)
@@ -40,5 +43,7 @@ else
 	</table>
 	<h2>Order Total: @Model.Total.ToString("C")</h2>
 	<button type="submit" asp-page-handler="Buy">Buy</button>
+
+
 </form>
 }

@@ -25,6 +25,8 @@ namespace RestaurantWebApp
 			services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
 			services.AddSingleton(Configuration); // Add this line to make Configuration accessible
 			services.AddRazorPages(); // Add this line for Razor Pages support
+			StripeConfiguration.ApiKey = Configuration["Stripe:StripeSecretKey"];
+
 		}
 
 
@@ -42,9 +44,7 @@ namespace RestaurantWebApp
 
 			// Other app configurations...
 
-			// Configure Stripe
-			StripeConfiguration.ApiKey = Configuration["Stripe:SecretKey"];
-
+			
 			app.UseStaticFiles(); // Ensure this line is present to serve static files
 
 			app.UseRouting();

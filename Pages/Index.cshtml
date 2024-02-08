@@ -22,8 +22,12 @@
     <p>Is Admin: @isAdminRole</p>
     <p>Is Member: @isMemberRole</p>
 </div>
+
+
 @* Specials Section *@
-@*  Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@
+@*  
+Start of adapted code, Muhib, 2022
+Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@
 
     <section class="section">
         <div class="container">
@@ -60,60 +64,6 @@
 
 
 
-@* 
-<section class="section">
-
-
-<div class=" text-center">
-    <h2 class="display-4">Our Menu Items</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FoodItem[0].ImageData)
-                </th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach (var tblFoodItems in Model.FoodItem)
-            {
-                <tr>
-                    <td>@tblFoodItems.ID</td>
-                    <td>@tblFoodItems.Item_name</td>
-                    <td>@tblFoodItems.Item_desc</td>
-                    <td>@tblFoodItems.Price</td>
-               
-                @{
-                    try
-                    {
-                        <td>
-                                <img src="@string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(tblFoodItems.ImageData))" alt="@tblFoodItems.ImageDescription" />
-                        </td>
-                    }
-                    catch
-                    {
-                        <td>
-                            <img class="img-thumb" src="/Images/no-image.png" alt="No Image provided" />
-                        </td>
-                    }
-                }
-            
-                    
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
-</section>
- *@
-
-
-
 
 <section class="section">
     <h2>Our Story</h2>
@@ -136,3 +86,5 @@
 	</form>
 
 </section>
+
+@*End of adapted code *@

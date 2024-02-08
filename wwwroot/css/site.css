@@ -250,9 +250,10 @@ section {
 .circle-add:before {
     content: '\F244';
 }
+/*code adapted from Nahian, 2023*/
 
 .main{
-    width: 1170px;
+    width: 1140px;
     margin: 0 auto;
     padding: 100px 0 inherit;
 }
@@ -343,10 +344,11 @@ section {
 
 
 .square-menu {
-    width: 100px; /* Adjust the width as needed */
-    height: 100px; /* Adjust the height as needed */
-    object-fit: cover; /* This property ensures the image covers the entire container */
+    width: 100px; 
+    height: 100px; 
+    object-fit: cover; 
 }
+/*end of adapted codd*/
 
 .pagetopper{
     margin-top:25px

@@ -6,7 +6,7 @@
 console.log("hello world");
 
 
-
+//start of adapted code Muhib, 2022
 // fading animation with better performance
 const allSections = document.querySelectorAll(".section");
 
@@ -26,3 +26,5 @@ allSections.forEach((section) => {
     sectionObserver.observe(section);
     section.classList.add("section_hidden");
 });
+
+//end of adapted code
