@@ -25,12 +25,12 @@ namespace RestaurantWebApp.Pages.Menu
 
 
 
-        // public IndexModel(RestaurantWebApp.Data.RestaurantWebAppContext context)
-        //{
-        //    _context = context;
-        // }
+		// public IndexModel(RestaurantWebApp.Data.RestaurantWebAppContext context)
+		//{
+		//    _context = context;
+		// }
 
-        public IList<FoodItem> FoodItem { get; set; } = default!;
+		public IList<FoodItem> FoodItem { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
@@ -40,7 +40,16 @@ namespace RestaurantWebApp.Pages.Menu
             }
         }
 
-        public async Task<IActionResult> OnPostBuyAsync(int itemID)
+		[BindProperty]
+		public string Search { get; set; }
+		
+
+		public IActionResult OnPostSearch()
+		{
+			FoodItem = _context.FoodItems.FromSqlRaw("SELECT * FROM FoodItem WHERE Item_name LIKE'" + Search + "%'").ToList();
+			return Page();
+		}
+		public async Task<IActionResult> OnPostBuyAsync(int itemID)
         {
             var user = await _userManager.GetUserAsync(User);
             CheckoutCustomer customer = await _db

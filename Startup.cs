@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RestaurantWebApp.Models;
 using Stripe;
 
 namespace RestaurantWebApp
@@ -17,20 +16,18 @@ namespace RestaurantWebApp
 
 		public IConfiguration Configuration { get; }
 
-		
 		public void ConfigureServices(IServiceCollection services)
 		{
-			// Other service configurations...
+			services.AddControllersWithViews();
 
-			services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
-			services.AddSingleton(Configuration); // Add this line to make Configuration accessible
-			services.AddRazorPages(); // Add this line for Razor Pages support
-			StripeConfiguration.ApiKey = Configuration["Stripe:StripeSecretKey"];
+			var stripeSecretKey = Configuration["Stripe:SecretKey"];
+			StripeConfiguration.ApiKey = stripeSecretKey;
+			services.AddLogging();
 
-		}
+            services.AddControllersWithViews();
+        }
 
-
-		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			if (env.IsDevelopment())
 			{
@@ -42,27 +39,22 @@ namespace RestaurantWebApp
 				app.UseHsts();
 			}
 
-			// Other app configurations...
-
-			
-			app.UseStaticFiles(); // Ensure this line is present to serve static files
+			app.UseHttpsRedirection();
+			app.UseStaticFiles();
 
 			app.UseRouting();
 
 			app.UseAuthorization();
 
-			app.UseEndpoints(endpoints =>
-			{
-				// Other endpoint configurations...
 
-				endpoints.MapControllerRoute(
-					name: "default",
-					pattern: "{controller=Home}/{action=Index}/{id?}");
+            // Inside Configure method
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
 
-				endpoints.MapRazorPages(); // Add this line for Razor Pages support
-			});
-
-			// Other app configurations...
-		}
-	}
+        }
+    }
 }

@@ -1,49 +1,52 @@
 ﻿@page
 @model RestaurantWebApp.Pages.CheckoutModel
 @{
-	ViewData["Title"] = "Mathu Khai Che Checkout";
+    ViewData["Title"] = "Checkout Basket";
 }
-@using RestaurantWebApp.Data
-@using Microsoft.Extensions.Options
-<head>
-	<!-- Add this in the head section of your Checkout.cshtml file -->
-	<script src="https://js.stripe.com/v3/"></script>
-</head>
+
 <h1>@ViewData["Title"]</h1>
 
 @if (Model.Items.Count == 0)
 {
-	<p>You do not have any items in your basket. Please Revisit the Menu.</p>
+    <p>You do not have any items in your basket. Please Revisit the Menu.</p>
 }
 else
 {
-<form method ="post">
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Price</th>
-				<th>Quantity</th>
-				<th>Subtotal</th>
-			</tr>
-		</thead>
-		<tbody>
-				@foreach (var item in Model.Items)
-				{
-					var subtotal = item.Price * item.Quantity;
-					<tr>
-						<td>@item.Item_Name</td>
-						<td>@item.Price.ToString("C")</td>
-						<td>@item.Quantity</td>
-						<td>@subtotal.ToString("C")</td>
-
-					</tr>
-				}
-			</tbody>
-	</table>
-	<h2>Order Total: @Model.Total.ToString("C")</h2>
-	<button type="submit" asp-page-handler="Buy">Buy</button>
-
-
-</form>
+    <form method="post" asp-page-handler="UpdateQuantity">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    var subtotal = item.Price * item.Quantity;
+                    <tr>
+                        <td>@item.Item_Name</td>
+                        <td>@item.Price.ToString("C")</td>
+                        <td>
+                            <input type="number" name="quantity" value="@item.Quantity" min="1" />
+                            <input type="hidden" name="itemId" value="@item.ID" />
+                            <button type="submit">Update Quantity</button>
+                        </td>
+                        <td>@subtotal.ToString("C")</td>
+                        <td>
+                            <button type="submit" asp-page-handler="Delete" asp-route-itemId="@item.ID">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <h2>Order Total: @Model.Total.ToString("C")</h2>
+        <button type="submit" asp-page-handler="Buy">Buy</button>
+    </form>
+    <form action="/Payment/">
+        <button type="submit">Pay</button>
+    </form>
 }

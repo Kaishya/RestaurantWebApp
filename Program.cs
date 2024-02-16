@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using RestaurantWebApp.Data;
 using Microsoft.AspNetCore.Identity;
+using Stripe;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -75,3 +76,4 @@ using (var scope = app.Services.CreateScope()) {
 }
 
 app.Run();
+

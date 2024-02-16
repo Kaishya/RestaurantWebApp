@@ -1,0 +1,46 @@
+﻿@page "/Payment"
+@model PaymentModel
+@{
+    ViewData["Title"] = "Buy Items:";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    @Html.AntiForgeryToken()
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                var subtotal = item.Price * item.Quantity;
+                <tr>
+                    <td>@item.Item_Name</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>@item.Quantity</td>
+                    <td>@subtotal.ToString("C")</td>
+                </tr>
+            }
+           
+        </tbody>
+    </table>
+    <h2>Order Total: @Model.Total.ToString("C")</h2>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="@Model.StripePublishableKey"
+            data-amount="@Model.TotalAmountInCents"
+            data-name="Mathu Khai Che"
+            data-description="Payment for Items"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-locale="auto"
+            data-currency="gbp">
+    </script>
+</form>

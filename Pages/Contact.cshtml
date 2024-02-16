@@ -4,36 +4,103 @@
     ViewData["Title"] = "Contact Page";
 }
 
-<form method="post">
-
 <section class="section">
 <div class="text-center">
-    <h1 class="display-4">Contact Us </h1>
-    <p>Email <a></a>.</p>
+    <h2 class="display-4">Contact Us </h2>
+        <p class="text-center w-responsive mx-auto mb-5">
+            Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
+            a matter of hours to help you.
+        </p>
 </div>
 </section>
+@* using  https://mdbootstrap.com/docs/b4/jquery/forms/contact/
+ *@
+<!--Section: Contact v.2-->
 
+    <div class="row">
 
+        <!--Grid column-->
+        <div class="col-md-9 mb-md-0 mb-5">
+            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
 
+                <!--Grid row-->
+                <div class="row">
 
-@foreach (var tblFoodItems in Model.FoodItem.Take(3))
-{
+                    <!--Grid column-->
+                    <div class="col-md-6">
+					<div class="md-form mb-0">
+						<label for="name" class="">Your name</label>
+                            <input type="text" id="name" name="name" class="form-control">
+                            
+                        </div>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-md-6">
+					<div class="md-form mb-0">
+						<label for="email" class="">Your email</label>
+                            <input type="text" id="email" name="email" class="form-control">
+                        </div>
+                    </div>
+                    <!--Grid column-->
 
+                </div>
+                <!--Grid row-->
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-12">
+					<div class="md-form mb-0">
+						<label for="subject" class="">Subject of Message</label>
+                            <input type="text" id="subject" name="subject" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <!--Grid row-->
+                <!--Grid row-->
+                <div class="row">
 
-    <div class="dishItem">
-        <div class="dishImage">
-            <img src="https://www.whiskaffair.com/wp-content/uploads/2019/05/Dahi-Puri-2-3.jpg" alt="pani puri" />
+                    <!--Grid column-->
+                    <div class="col-md-12">
+
+					<div class="md-form">
+						<label for="message">Your message</label>
+                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Grid row-->
+
+            </form>
+
+            <div class="text-center text-md-left">
+                <a class="btn btn-primary">Send!</a>
+                @* <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a> *@
+            </div>
+            <div class="status"></div>
         </div>
-        <div class="dishContent">
-            <h3>@tblFoodItems.Item_name</h3>
+        <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-md-3 text-center">
+            <ul class="list-unstyled mb-0">
+                <li>
+                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                    <p>Douglas, IM9 RB4, IOM</p>
+                </li>
+
+                <li>
+                    <i class="fas fa-phone mt-4 fa-2x"></i>
+                    <p>+44 07624 123456</p>
+                </li>
+
+                <li>
+                    <i class="fas fa-envelope mt-4 fa-2x"></i>
+                    <p>MathuKhaiChe@gmail.com</p>
+                </li>
+            </ul>
         </div>
-        <div class="dishContentBottom"> 
-                <span class="dishPrice"> @tblFoodItems.Price?.ToString("C2")</span>
-@*             <button type="submit" asp-page-handler="Buy" asp-route-itemID="@tblFoodItems.ID">
-                Add To Basket
-            </button> *@
-        </div>
+        <!--Grid column-->
+
     </div>
 
-}
-</form>
+<!--Section: Contact v.2-->

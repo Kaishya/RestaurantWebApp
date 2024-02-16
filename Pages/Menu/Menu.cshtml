@@ -12,10 +12,16 @@
 	<div class="title">
 		<h2 class="pagetopper">Our Menu</h2>
 		<p>a mix of traditional and street foods</p>
+		<form method="post">
+			
+			<button class="bi bi-search"></button>
+			<div>Search <input asp-for="Search" /> </div>
+			<button type="submit" asp-page-handler="Search">Submit</button>
+		</form>
 	</div>
 	<div class="foods">
-	@foreach (var item in Model.FoodItem)
-	{
+		@foreach (var item in Model.FoodItem)
+		{
 		//Start of adapted code Nahian, 2023
 		<div class="oneItem">
 				@if (item.ImageData != null && item.ImageData.Length > 0)

@@ -41,7 +41,7 @@
                         @* <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Menu/Index">Admin Menu</a>
                         </li> *@
-                            @if (User.IsInRole("Member") || User.IsInRole("Admin"))
+                            @if (User.IsInRole("Admin"))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-page="/Menu/Index">Admin Menu</a>
@@ -50,13 +50,19 @@
 
                        
                     </ul>
+                    
                     <ul class="nav navbar-nav navbar-right ">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Checkout">Checkout</a>
                         </li>
                         
                     </ul>
-                    <partial name="_LoginPartial"/>
+                        @if (!User.IsInRole("Member") || !User.IsInRole("Admin"))
+                        {
+                             <partial name="_LoginPartial"/>
+
+                        }
+
                 </div>
             </div>
         </nav>

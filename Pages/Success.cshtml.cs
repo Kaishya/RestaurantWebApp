@@ -10,11 +10,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using RestaurantWebApp.Models;
+using Stripe;
 
 namespace RestaurantWebApp.Pages
 {
-    [Authorize(Roles = "Admin, Member")]
-    public class CheckoutModel : PageModel
+    public class SuccessModel : PageModel
     {
         private readonly RestaurantWebAppContext _db;
         private readonly UserManager<IdentityUser> _userManager;
@@ -25,7 +25,7 @@ namespace RestaurantWebApp.Pages
         public decimal Total;
         public long AmountPayable;
 
-        public CheckoutModel(RestaurantWebAppContext db, UserManager<IdentityUser> userManager)
+        public SuccessModel(RestaurantWebAppContext db, UserManager<IdentityUser> userManager)
         {
             _db = db;
             _userManager = userManager;
@@ -33,23 +33,7 @@ namespace RestaurantWebApp.Pages
 
         public async Task OnGetAsync()
         {
-            var user = await _userManager.GetUserAsync(User);
-            CheckoutCustomer customer = await _db.CheckoutCustomers.FindAsync(user.Email);
-
-            Items = _db.CheckoutItems.FromSqlRaw(
-                "SELECT FoodItem.ID, FoodItem.Price, " +
-                "FoodItem.Item_name, " +
-                "BasketItems.BasketID, BasketItems.Quantity " +
-                "FROM FoodItem INNER JOIN BasketItems " +
-                "On FoodItem.ID = BasketItems.StockID " +
-                "WHERE BasketID = {0}", customer.BasketID
-                ).ToList();
-
-            foreach (var item in Items)
-            {
-                Total += (item.Quantity * item.Price);
-            }
-            AmountPayable = (long)Total;
+            await OnPostBuyAsync(); // Call the OnPostBuyAsync method when navigating to the Success page
         }
 
         public async Task<IActionResult> OnPostBuyAsync()
@@ -89,42 +73,6 @@ namespace RestaurantWebApp.Pages
             await _db.SaveChangesAsync();
 
             return RedirectToPage("/Index");
-        }
-
-        public async Task<IActionResult> OnPostDeleteAsync(int itemId)
-        {
-            var user = await _userManager.GetUserAsync(User);
-            CheckoutCustomer customer = await _db.CheckoutCustomers.FindAsync(user.Email);
-
-            var itemToDelete = _db.BasketItems.FirstOrDefault(i => i.StockID == itemId && i.BasketID == customer.BasketID);
-
-            if (itemToDelete != null)
-            {
-                _db.BasketItems.Remove(itemToDelete);
-                await _db.SaveChangesAsync();
-            }
-
-            return RedirectToPage("/Checkout");
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> OnPostUpdateQuantityAsync(int itemId, int quantity)
-        {
-            var user = await _userManager.GetUserAsync(User);
-            CheckoutCustomer customer = await _db.CheckoutCustomers.FindAsync(user.Email);
-
-            var itemToUpdate = _db.BasketItems.FirstOrDefault(i => i.StockID == itemId && i.BasketID == customer.BasketID);
-
-            if (itemToUpdate != null)
-            {
-                // Update the quantity
-                itemToUpdate.Quantity = quantity;
-
-                _db.BasketItems.Update(itemToUpdate);
-                await _db.SaveChangesAsync();
-            }
-
-            return RedirectToPage("/Checkout");
         }
     }
 }

@@ -165,7 +165,7 @@ li {
 }
 
 .dishContentBottom {
-    display: fixed;
+/*    display: fixed;*/
     align-items: center;
     justify-content: space-between;
     margin-top: 10px
@@ -255,7 +255,8 @@ section {
 .main{
     width: 1140px;
     margin: 0 auto;
-    padding: 100px 0 inherit;
+    padding: 100px;
+    padding: inherit;
 }
 
 .title{
@@ -356,3 +357,4 @@ section {
 .float-right {
     float: right;
 }
+
