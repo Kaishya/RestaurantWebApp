@@ -60,12 +60,10 @@ namespace RestaurantWebApp.Data
                 }
             }
 
-            // Create and assign "Member" role for other users
             var allUsers = await userManager.Users.ToListAsync();
 
             foreach (var user in allUsers)
             {
-                // Check if the user is not "admin@ucm.ac.im", then assign "Member" role
                 if (user.UserName != "admin@ucm.ac.im")
                 {
                     await userManager.AddToRoleAsync(user, memberRole);

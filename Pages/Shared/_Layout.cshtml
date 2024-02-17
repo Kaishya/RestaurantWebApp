@@ -50,13 +50,16 @@
 
                        
                     </ul>
-                    
-                    <ul class="nav navbar-nav navbar-right ">
+                        @if (!User.IsInRole("Admin") )
+                        {
+                            <ul class="nav navbar-nav navbar-right ">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Checkout">Checkout</a>
                         </li>
                         
                     </ul>
+                        }
+                        
                         @if (!User.IsInRole("Member") || !User.IsInRole("Admin"))
                         {
                              <partial name="_LoginPartial"/>

@@ -51,63 +51,65 @@ namespace RestaurantWebApp.Pages
             }
             AmountPayable = (long)Total;
         }
+		/*
+				public async Task<IActionResult> OnPostBuyAsync()
+				{
+					var currentOrder = _db.OrderHistories.FromSqlRaw("SELECT * From OrderHistories")
+						.OrderByDescending(b => b.OrderNo)
+						.FirstOrDefault();
 
-        public async Task<IActionResult> OnPostBuyAsync()
-        {
-            var currentOrder = _db.OrderHistories.FromSqlRaw("SELECT * From OrderHistories")
-                .OrderByDescending(b => b.OrderNo)
-                .FirstOrDefault();
+					if (currentOrder == null)
+					{
+						Order.OrderNo = 1;
+					}
+					else
+					{
+						Order.OrderNo = currentOrder.OrderNo + 1;
+					}
 
-            if (currentOrder == null)
-            {
-                Order.OrderNo = 1;
-            }
-            else
-            {
-                Order.OrderNo = currentOrder.OrderNo + 1;
-            }
+					var user = await _userManager.GetUserAsync(User);
+					Order.Email = user.Email;
+					_db.OrderHistories.Add(Order);
 
-            var user = await _userManager.GetUserAsync(User);
-            Order.Email = user.Email;
-            _db.OrderHistories.Add(Order);
+					CheckoutCustomer customer = await _db.CheckoutCustomers.FindAsync(user.Email);
+					var basketItems = _db.BasketItems.FromSqlRaw("SELECT * From BasketItems WHERE BasketID = {0}", customer.BasketID).ToList();
 
-            CheckoutCustomer customer = await _db.CheckoutCustomers.FindAsync(user.Email);
-            var basketItems = _db.BasketItems.FromSqlRaw("SELECT * From BasketItems WHERE BasketID = {0}", customer.BasketID).ToList();
+					foreach (var item in basketItems)
+					{
+						RestaurantWebApp.Data.OrderItem oi = new RestaurantWebApp.Data.OrderItem
+						{
+							OrderNo = Order.OrderNo,
+							StockID = item.StockID,
+							Quantity = item.Quantity
+						};
+						_db.OrderItems.Add(oi);
+						_db.BasketItems.Remove(item);
+					}
 
-            foreach (var item in basketItems)
-            {
-                RestaurantWebApp.Data.OrderItem oi = new RestaurantWebApp.Data.OrderItem
-                {
-                    OrderNo = Order.OrderNo,
-                    StockID = item.StockID,
-                    Quantity = item.Quantity
-                };
-                _db.OrderItems.Add(oi);
-                _db.BasketItems.Remove(item);
-            }
+					await _db.SaveChangesAsync();
 
-            await _db.SaveChangesAsync();
+					return RedirectToPage("/Index");
+				}
+		*/
+		public async Task<IActionResult> OnPostDeleteAsync(int itemId)
+		{
+			var user = await _userManager.GetUserAsync(User);
+			CheckoutCustomer customer = await _db.CheckoutCustomers.FindAsync(user.Email);
 
-            return RedirectToPage("/Index");
-        }
+			var itemToDelete = await _db.BasketItems
+				.FirstOrDefaultAsync(i => i.StockID == itemId && i.BasketID == customer.BasketID);
 
-        public async Task<IActionResult> OnPostDeleteAsync(int itemId)
-        {
-            var user = await _userManager.GetUserAsync(User);
-            CheckoutCustomer customer = await _db.CheckoutCustomers.FindAsync(user.Email);
+			if (itemToDelete != null)
+			{
+				_db.BasketItems.Remove(itemToDelete);
+				await _db.SaveChangesAsync();
+			}
 
-            var itemToDelete = _db.BasketItems.FirstOrDefault(i => i.StockID == itemId && i.BasketID == customer.BasketID);
+			return RedirectToPage("/Checkout");
+		}
 
-            if (itemToDelete != null)
-            {
-                _db.BasketItems.Remove(itemToDelete);
-                await _db.SaveChangesAsync();
-            }
 
-            return RedirectToPage("/Checkout");
-        }
-
-        [HttpPost]
+		[HttpPost]
         public async Task<IActionResult> OnPostUpdateQuantityAsync(int itemId, int quantity)
         {
             var user = await _userManager.GetUserAsync(User);

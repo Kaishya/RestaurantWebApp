@@ -1,5 +1,5 @@
 ﻿@page
-@model IndexModel
+@model ContactModel
 @{
     ViewData["Title"] = "Contact Page";
 }
@@ -7,10 +7,12 @@
 <section class="section">
 <div class="text-center">
     <h2 class="display-4">Contact Us </h2>
-        <p class="text-center w-responsive mx-auto mb-5">
+        <p class="text-center w-responsive mx-auto ">
             Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
             a matter of hours to help you.
         </p>
+        <h2>@Model.SuccessMessage</h2>
+
 </div>
 </section>
 @* using  https://mdbootstrap.com/docs/b4/jquery/forms/contact/
@@ -73,19 +75,28 @@
 
             </form>
 
-            <div class="text-center text-md-left">
-                <a class="btn btn-primary">Send!</a>
-                @* <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a> *@
-            </div>
+        <div class="text-center text-md-left">
+            <form method="post">
+                <!-- Your form fields here -->
+
+                <button type="submit" class="btn btn-primary">Send!</button>
+            </form>
+        </div>
+
             <div class="status"></div>
         </div>
         <!--Grid column-->
         <!--Grid column-->
         <div class="col-md-3 text-center">
-            <ul class="list-unstyled mb-0">
+        <ul class="list-unstyled mb-0" style="color: #7aa48f;">
                 <li>
                     <i class="fas fa-map-marker-alt fa-2x"></i>
-                    <p>Douglas, IM9 RB4, IOM</p>
+                <p>
+                    123 Main Street <br>
+                    Cityville, State <br>
+                    Country
+                </p>
+
                 </li>
 
                 <li>
@@ -95,7 +106,7 @@
 
                 <li>
                     <i class="fas fa-envelope mt-4 fa-2x"></i>
-                    <p>MathuKhaiChe@gmail.com</p>
+                <p>info@mathukhaiche.com</p>
                 </li>
             </ul>
         </div>

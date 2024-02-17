@@ -301,14 +301,19 @@ section {
     border-color:seagreen;
 }
 
-.oneItem img{
-    max-width:120px;
-    border-radius:50%;
-    border:1px solid #ddd;
-    padding:3px;
-    margin-right:20px;
-    transition: .3s;
-}
+    .oneItem img {
+        object-fit: cover;
+        max-width: 120px;
+      /*  max-height: 120px;
+        min-width: 120px;
+        min-height: 120px;*/
+        border-radius: 50%;
+        border: 1px solid #ddd;
+        padding: 3px;
+        margin-right: 20px;
+        transition: .3s;
+    }
+
 
 .oneItem:hover img{
     border-radius:0;
@@ -358,3 +363,41 @@ section {
     float: right;
 }
 
+
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
+
+.formy {
+    background-color: #e7f0e1;
+    width: 300px;
+    height: 44px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+/*    margin-left: 50%
+*/    position: center;
+    
+}
+.inputy {
+    all: unset;
+    font: 16px system-ui;
+    color: black;
+    height: 75%;
+    width: 100%;
+    padding: 6px 10px;
+    background: #e7f0e1;
+}
+.buttony {
+    all: unset;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    color: black;
+    background-color: #B6D8A4
+}

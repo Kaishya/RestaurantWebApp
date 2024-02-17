@@ -12,12 +12,18 @@
 	<div class="title">
 		<h2 class="pagetopper">Our Menu</h2>
 		<p>a mix of traditional and street foods</p>
-		<form method="post">
-			
-			<button class="bi bi-search"></button>
+		@* <form method="post">
 			<div>Search <input asp-for="Search" /> </div>
 			<button type="submit" asp-page-handler="Search">Submit</button>
+		</form> *@
+
+		<form id="form" class="formy" role="search" method="post" asp-page-handler="Search">
+			<input class="inputy" type="search" id="query" name="Search"
+				   placeholder="Search Food Items..."
+				   aria-label="Search through site content">
+			<button class="buttony" type="submit">Go!</button>
 		</form>
+
 	</div>
 	<div class="foods">
 		@foreach (var item in Model.FoodItem)

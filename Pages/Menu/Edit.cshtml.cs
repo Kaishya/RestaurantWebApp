@@ -41,11 +41,24 @@ namespace RestaurantWebApp.Pages.Menu
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
+            }
+
+            foreach (var file in Request.Form.Files)
+            {
+                if (file.Length > 0)
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        file.CopyTo(ms);
+                        FoodItem.ImageData = ms.ToArray();
+                    }
+                }
             }
 
             _context.Attach(FoodItem).State = EntityState.Modified;
@@ -68,6 +81,8 @@ namespace RestaurantWebApp.Pages.Menu
 
             return RedirectToPage("./Index");
         }
+
+
 
         private bool FoodItemExists(int id)
         {
