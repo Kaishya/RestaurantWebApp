@@ -12,12 +12,12 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace RestaurantWebApp.Pages.Menu
 {
-	[Authorize(Roles = "Admin")]
-	public class IndexModel : PageModel
+    [Authorize(Roles = "Admin")]
+    public class IndexModel : PageModel
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RestaurantWebAppContext _db;
-        private readonly RestaurantWebApp.Data.RestaurantWebAppContext _context;
+        private readonly RestaurantWebAppContext _context;
 
         public IndexModel(RestaurantWebAppContext db, UserManager<IdentityUser> userManager, RestaurantWebAppContext context)
         {
@@ -33,7 +33,7 @@ namespace RestaurantWebApp.Pages.Menu
         //    _context = context;
         // }
 
-        public IList<FoodItem> FoodItem { get;set; } = default!;
+        public IList<FoodItem> FoodItem { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
@@ -72,7 +72,7 @@ namespace RestaurantWebApp.Pages.Menu
                 {
                     await _db.SaveChangesAsync();
                 }
-                catch(DbUpdateConcurrencyException e)
+                catch (DbUpdateConcurrencyException e)
                 {
                     throw new Exception($"Basket not found!", e);
                 }

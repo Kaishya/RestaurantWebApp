@@ -20,7 +20,9 @@ body {
   margin-bottom: 60px;
 }
 h1 {
-    font-family: 'Dosis', sans-serif;
+    /*    font-family: 'Dosis', sans-serif;
+*/
+    font-family: "Quando", serif;
 }
 h2 {
     font-family: 'Dancing Script', cursive;
@@ -32,7 +34,9 @@ h3 {
 li {
     font-family: 'Lexend', sans-serif;
 }
-
+.margintop{
+    margin-top:2%
+}
 
 /*Using this tutorial for the main text https://www.w3schools.com/howto/howto_css_cutout_text.asp*/
 .text {
@@ -124,7 +128,16 @@ li {
     animation-timing-function: ease;
   }
 }
+.thiing {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 50px;
+}
 
+.contact-info {
+    margin: 0 20px; /* Adjust the margin between items as needed */
+}
 
 /*Specials Section*/
 /*From tutorial   https://www.youtube.com/watch?v=Q3MPM7fBO5U*/ 
@@ -132,6 +145,9 @@ li {
     text-align:center;
     margin-bottom: 50px;
 }
+
+
+
 .dishSelection h2{
     font-size: 2rem;
     font-weight:500;
@@ -193,211 +209,553 @@ li {
     border-radius: 5px;
 }
 
-section {
-    padding: 5% 0%;
-}
-.section {
-    transition: transform 1s, opacity 1s;
-}
-.section_hidden {
-    opacity: 0;
-    transform: translateY(8rem);
-}
-
-
-
-.remix {
-    width: 24px;
-    height: 24px;
-    fill: #333;
-}
-.naver {
-    padding-bottom: 5%
-}
-
-.flex-container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content:center;
-}
-
-    .flex-container > div {
-        border-radius: 5px;
-        width: 500px;
-        margin: 10px;
-        padding: 5px;
-        text-align: center;
-        line-height: 25px;
-        font-size: 10px;
-        -webkit-transition-duration: 1.4s;
-        transition-duration: 1.4s;
+@media (max-width: 768px) {
+    .dishWrapper {
+        flex-direction: column; /* Stack items on smaller screens */
+        align-items: center;
     }
 
-        .flex-container > div:hover {
-            background-color: #e6f7e9;
-            color: black;
+  
+    .dishItem {
+        width: 100%; /* Reset width for larger screens */
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1.5rem; /* Add some space between stacked items */
+    }
+
+    .dishContent {
+        width: 100%; /* Full width for larger screens */
+        text-align: center; /* Adjust text alignment as needed */
+    }
+        .dishContent h3 {
+            font-size: 2rem; /* Adjusted font size for smaller screens */
+        }
+
+        .dishContentBottom {
+            flex-direction: row; /* Align items in a row for larger screens */
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+        }
+    .addToCart {
+        width: 20px;
+        height: 20px;
+        display: flex; /* Add flex display to center items */
+        justify-content: center; /* Center items horizontally */
+        align-items: center; /* Center items vertically */
+        background: white;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .dishImage {
+        width: 20%;
+        border-radius: 50%;
+    }
+}
+
+
+    /*sections*/
+    section {
+        padding: 5% 0%;
+    }
+
+    .section {
+        transition: transform 1s, opacity 1s;
+    }
+
+    .section_hidden {
+        opacity: 0;
+        transform: translateY(8rem);
+    }
+
+
+/* Add this to your existing CSS or stylesheet */
+
+.story-heading {
+    font-size: 2rem;
+    color: #333; /* Set your preferred color */
+}
+
+.story-paragraph {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555; /* Set your preferred color */
+    margin-top: 10px;
+}
+
+
+    .remix {
+        width: 24px;
+        height: 24px;
+        fill: #333;
+    }
+
+    .naver {
+        padding-bottom: 3%
+    }
+
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+        .flex-container > div {
+            border-radius: 5px;
+            width: 500px;
+            margin: 10px;
+            padding: 5px;
+            text-align: center;
+            line-height: 25px;
+            font-size: 10px;
+            -webkit-transition-duration: 1.4s;
+            transition-duration: 1.4s;
+        }
+
+            .flex-container > div:hover {
+                background-color: #e6f7e9;
+                color: black;
+            }
+
+
+    .vegan {
+        color: white;
+        background-color: #B6D8A4;
+        padding: 5px;
+        /*  margin:5px;*/
+        border-radius: 4px;
+    }
+
+    .circle-add:before {
+        content: '\F244';
+    }
+    /*code adapted from Nahian, 2023*/
+
+    .main {
+        width: 1140px;
+        margin: 0 auto;
+        padding: 100px;
+        padding: inherit;
+    }
+
+    .title {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+        .title h2 {
+            font-size: 40px;
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 20px
+        }
+
+            .title h2:after {
+                position: absolute;
+                content: "";
+                width: 80px;
+                height: 2px;
+                background-color: seagreen;
+                left: 50%;
+                transform: translateX(-50%)
+            }
+
+    .foods {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .oneItem {
+        flex-basis: 48%;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+    }
+
+        .oneItem:nth-child(5), .oneItem:nth-child(6) {
+            border-bottom: 0;
+        }
+
+        .oneItem:hover {
+            border-color: seagreen;
+        }
+
+        .oneItem img {
+            object-fit: cover;
+            max-width: 120px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            padding: 3px;
+            margin-right: 20px;
+            transition: .3s;
         }
 
 
-.vegan {
-    color: white;
-    background-color: #B6D8A4;
-    padding: 5px;
-  /*  margin:5px;*/
-    border-radius: 4px;
-}
-.circle-add:before {
-    content: '\F244';
-}
-/*code adapted from Nahian, 2023*/
+        .oneItem:hover img {
+            border-radius: 0;
+        }
 
-.main{
-    width: 1140px;
-    margin: 0 auto;
-    padding: 100px;
-    padding: inherit;
-}
+    .itemInfo h3 {
+        font-size: 22px;
+        border-bottom: 1px dashed #ddd;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
 
-.title{
-    text-align:center;
-    margin-bottom:60px;
-}
-.title h2{
-    font-size:40px;
-    position:relative;
-    padding-bottom: 20px;
-    margin-bottom:20px
-}
-.title h2:after{
-    position:absolute;
-    content: "";
-    width: 80px;
-    height: 2px;
-    background-color:seagreen;
-    left:50%;
-    transform:translateX(-50%)
+        .itemInfo h3 span {
+            float: right;
+            color: orangered;
+            font-style: italic;
+        }
 
-}
-.foods{
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-}
-.oneItem{
-    flex-basis: 48%;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 30px;
-    margin-bottom:30px;
-    display:flex;
-    align-items: center;
+    .itemInfo button {
+        float: right;
+    }
 
-}
+    @media only screen and (max-width: 800px) {
+        .main {
+            width: 350px;
+        }
 
-.oneItem:nth-child(5), .oneItem:nth-child(6){
-    border-bottom:0;
-}
-.oneItem:hover{
-    border-color:seagreen;
-}
+        .oneItem {
+            flex-basis: 100%;
+            flex-direction: column;
+        }
 
-    .oneItem img {
+            .oneItem img {
+                margin-bottom: 30px;
+            }
+    }
+
+
+
+    .square-menu {
+        width: 100px;
+        height: 100px;
         object-fit: cover;
-        max-width: 120px;
-      /*  max-height: 120px;
-        min-width: 120px;
-        min-height: 120px;*/
-        border-radius: 50%;
-        border: 1px solid #ddd;
-        padding: 3px;
-        margin-right: 20px;
-        transition: .3s;
     }
+    /*end of adapted codd*/
 
-
-.oneItem:hover img{
-    border-radius:0;
-}
-
-.itemInfo h3{
-    font-size:22px;
-    border-bottom:1px dashed #ddd;
-    padding-bottom:10px;
-    margin-bottom:10px;
-}
-
-.itemInfo h3 span {
-    float:right;
-    color: orangered;
-    font-style:italic;
-}
-.itemInfo button {
-    float:right;
-}
-
-@media only screen and (max-width: 800px){
-    .main{
-        width:350px;
+    .pagetopper {
+        margin-top: 2vw;
     }
-    .oneItem{
-        flex-basis:100%;
-        flex-direction:column;
-    }
-    .oneItem img{
-        margin-bottom:30px;
+@media only screen and (max-width: 1080px) {
+    .pagetopper {
+        margin-top: 10vw;
     }
 }
 
+    .float-right {
+        float: right;
+    }
 
-.square-menu {
-    width: 100px; 
-    height: 100px; 
-    object-fit: cover; 
-}
-/*end of adapted codd*/
-
-.pagetopper{
-    margin-top:25px
-}
-.float-right {
-    float: right;
-}
+    .float-left {
+        float: left;
+    }
 
 
+    .formy {
+        background-color: #e7f0e1;
+        width: 300px;
+        height: 44px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: 70%;
+        position: center;
+    }
+
+    .inputy {
+        all: unset;
+        font: 16px system-ui;
+        color: black;
+        height: 75%;
+        width: 100%;
+        padding: 6px 10px;
+        background: #e7f0e1;
+    }
+
+    .buttony {
+        all: unset;
+        cursor: pointer;
+        width: 44px;
+        height: 44px;
+        color: black;
+        background-color: #B6D8A4;
+    }
+
+    @media only screen and (max-width: 800px) {
+        .formy {
+            margin-left: 0%;
+        }
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .main {
+            width: 350px;
+        }
+
+        .oneItem {
+            flex-basis: 100%;
+            flex-direction: column;
+        }
+
+            .oneItem img {
+                margin-bottom: 30px;
+            }
+
+        .formy {
+            margin-left: 0%;
+        }
+    }
+
+
+
+    .footi {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 4%;
+        background: linear-gradient(180deg,#d9e3d3, #e7f0e1); /* Linear gradient background */
+    }
+
+
+    .footer {
+        text-align: center;
+        height: 100%;
+    }
+
+    a {
+        color: #508f64;
+    }
+
+    .box-3 {
+        background-color: #66A182;
+    }
 
 
 
 
 
+    /* 
+========================
+      BUTTON THREE
+========================
+*/ /*https://codepen.io/natalia-reshetnikova */
+    .formbox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-@import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
+    .box-3 {
+        height: 33.33%;
+        width: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-.formy {
-    background-color: #e7f0e1;
-    width: 300px;
-    height: 44px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-/*    margin-left: 50%
-*/    position: center;
-    
-}
-.inputy {
-    all: unset;
-    font: 16px system-ui;
-    color: black;
-    height: 75%;
-    width: 100%;
-    padding: 6px 10px;
-    background: #e7f0e1;
-}
-.buttony {
-    all: unset;
-    cursor: pointer;
-    width: 44px;
-    height: 44px;
-    color: black;
-    background-color: #B6D8A4
-}
+    .btny {
+        line-height: 50px;
+        height: 50px;
+        text-align: center;
+        width: 250px;
+        cursor: pointer;
+    }
+
+    .btn-three {
+        color: #FFF;
+        transition: all 0.5s;
+        position: relative;
+    }
+
+        .btn-three::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-color: rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .btn-three:hover::before {
+            opacity: 0;
+            transform: scale(0.5,0.5);
+        }
+
+        .btn-three::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.5);
+            transform: scale(1.2,1.2);
+        }
+
+        .btn-three:hover::after {
+            opacity: 1;
+            transform: scale(1,1);
+        }
+
+
+
+    .iconcolor {
+        color: #4d6b5c;
+    }
+
+
+
+    @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+
+
+
+    header {
+        background-image: linear-gradient(180deg, #6c916c, #76AB8F);
+    }
+
+        header::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+    .logo {
+        float: left;
+        padding: 10px 0;
+    }
+
+    nav {
+        float: right;
+    }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav li {
+            display: inline-block;
+            margin-left: 70px;
+            padding-top: 5px;
+            position: relative;
+        }
+
+        nav a {
+            color: #444;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+
+            nav a:hover {
+                color: #000;
+            }
+
+            nav a::before {
+                content: '';
+                display: block;
+                height: 5px;
+                background-color: #444;
+                position: absolute;
+                top: 0;
+                width: 0%;
+                transition: all ease-in-out 250ms;
+            }
+
+            nav a:hover::before {
+                width: 100%;
+            }
+
+
+
+        nav button {
+            color: #444;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: xx-small;
+        }
+
+
+            nav button:hover {
+                color: #000;
+            }
+
+            nav button::before {
+                content: '';
+                display: block;
+                height: 5px;
+                background-color: #444;
+                position: absolute;
+                top: 0;
+                width: 0%;
+                transition: all ease-in-out 250ms;
+            }
+
+            nav button:hover::before {
+                width: 100%;
+            }
+
+    #map {
+        width: 100%;
+        height: 400px;
+        background-color: grey;
+    }
+
+    @media only screen and (max-width: 768px) {
+        nav {
+            float: none;
+            text-align: center;
+        }
+
+            nav ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                display: block;
+                margin: 0;
+                padding: 10px 0;
+            }
+    }
+
+    /* Custom styling for the button */
+    /* Custom styling for the button */
+    .styled-button {
+        background-color: rgba(0, 123, 255, 0.5); /* Set your desired transparent background color */
+        color: #fff; /* Set your desired text color */
+        border: 1px solid #007bff; /* Set your desired border color */
+        padding: 10px 20px; /* Set your desired padding */
+        cursor: pointer;
+        display: flex; /* Use flexbox to center the content horizontally and vertically */
+        justify-content: center;
+        align-items: center;
+        /* Add any additional styling properties as needed */
+    }
+
+        /* Custom styling for button hover effect (optional) */
+        .styled-button:hover {
+            background-color: rgba(0, 123, 255, 0.7); /* Set your desired hover background color with transparency */
+            border-color: #0056b3; /* Set your desired hover border color */
+            /* Add any additional styling properties for hover effect */
+        }

@@ -2,5 +2,17 @@
 @model RestaurantWebApp.Pages.SuccessModel
 @{
 }
+<h1 class="pagetopper">Hi @User.Identity.Name,</h1>
+<h3>Thank you for your support from the Mathu Khai Che Team!</h3>
 
-<h1>YEAH</h1>
+
+	@foreach (var item in Model.Items)
+	{
+		<p>@item.Quantity x @item.Item_Name</p>
+	}
+	<p>-----------------------</p>
+	<p>Total Amount: @Model.Total.ToString("C")</p>
+
+
+
+

@@ -18,9 +18,9 @@
         <div class="slide"></div>
         <div class="slide"> </div>
     </div>
-        <h1 class="display-4">Welcome to Mathu Khai Che </h1>
-    <p>Is Admin: @isAdminRole</p>
-    <p>Is Member: @isMemberRole</p>
+    <h1 class="margintop">Aromatic Delights, Authentic Bites</h1>
+@*     <p>Is Admin: @isAdminRole</p>
+    <p>Is Member: @isMemberRole</p> *@
 </div>
 
 
@@ -54,11 +54,27 @@ Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@
                     </div>
                     <div class="dishContentBottom">
                             <span class="dishPrice">@tblFoodItems.Price?.ToString("C2")</span>
-                            @* <span class="addToCart">
-                                <i class="ri-shopping-cart-2-fill"></i>
-                                </span> *@
-                            <button type="button" class="btn btn-light"><span class="bi bi-cart3"></span> </button>
 
+                            <form method="post" asp-page-handler="Buy" asp-route-itemID="@tblFoodItems.ID">
+                                @if (User.IsInRole("Member"))
+                                {
+
+                                    <button type="submit" class="btn btn-outline-dark">
+                                        <span class="bi bi-cart3"></span> 
+                                    </button>
+                                }
+                                else if (User.IsInRole("Admin"))
+                                {
+                                    <p class="text-muted">Cannot Add</p>
+                                }
+                                else
+                                {
+                                    <a href="/Identity/Account/Login" class="btn btn-outline-dark float-right">
+                                        <span class="bi bi-cart3"></span>
+                                    </a>
+                                }
+
+                            </form>
                     </div>
                 </div>
                 }
@@ -66,64 +82,96 @@ Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@
             </div>
             </div>
         </div>
-    <form action="/Menu/Menu">
-        <button class="nav-link text-dark" type="submit"> Menu</button>
+
+        <form id="menuForm" action="/Menu/Menu" class="formbox">
+        <div class="box-3">
+            <div class="btny btn-three" onclick="redirectToMenu()">
+                <span>Go To Menu!</span>
+            </div>
+        </div>
     </form>
+
 </section>
+
+    
+
+
+    
+
 
 
 
 
 <section class="section">
-    <h2>Our Story</h2>
+    <h2 class="story-heading">Our Story</h2>
     <div>
-        <p>Welcome to Mathu Khai Che - a culinary journey that began with a passion for bringing authentic flavors to your table.</p>
+        <p class="story-paragraph">
+            Welcome to Mathu Khai Che, where the dreams of flavor enthusiasts come to life, 
+            bringing the authentic tastes of Gujarat, India, to the Isle of Man. 
+            Our culinary journey is deeply rooted in Gujarat's rich heritage, weaving together the 
+            essence of Gujarati chaats with global inspirations. Our dedicated team has crafted an eclectic menu 
+            that transcends geographical boundaries, sparking the imagination and tantalizing the taste buds. From 
+            the streets of Gujarat to our kitchen, we celebrate authenticity by using locally sourced, fresh ingredients. 
+            Mathu Khai Che is more than a restaurant; it's a celebration of culture, tradition, and the joy of sharing delicious
+            meals with friends and family. Join us on this culinary adventure, immerse yourself in the vibrant spirit of Gujarat, 
+            and make Mathu Khai Che a part of your own story.
+        </p>
 
-        <p>Our story is rooted in the rich heritage of Gujarat, India, where the vibrant tapestry of flavors and spices inspired us to create a unique dining experience. Mathu Khai Che is more than just a restaurant; it's a celebration of culture, tradition, and the joy of sharing delicious meals with friends and family.</p>
+        @* <form id="aboutForm" action="/About" class="formbox">
+            <div class="box-3">
+                <div class="btny btn-three" onclick="redirectToAbout()">
+                    <span>More About Us</span>
+                </div>
+            </div>
+        </form> *@
 
-        <p>From the aromatic spices to the carefully crafted recipes passed down through generations, each dish at Mathu Khai Che tells a story. We believe in using fresh, locally sourced ingredients to ensure the highest quality and authenticity in every bite.</p>
-
-        <p>Our chefs bring their expertise and passion to the kitchen, creating a menu that reflects the diverse culinary landscape of Gujarat. Whether you're savoring our street food delights or enjoying a traditional thali, each dish is a labor of love.</p>
-
-        <p>At Mathu Khai Che, we strive to create a warm and inviting atmosphere for our guests. Our commitment to exceptional service and a memorable dining experience is at the heart of everything we do.</p>
-
-        <p>Thank you for joining us on this culinary adventure. We invite you to explore our menu, indulge in the flavors, and make Mathu Khai Che a part of your own story.</p>
+        
     </div>
-    <button>About Us</button>
 
 </section>
 
-
-<section class ="section"> 
-    <div class="container">
-        <div class="dishSelection">
-            <i class="fas fa-map-marker-alt fa-2x"></i>
+<section class="section ">
+    <h2>Contact Info</h2>
+    <div class="thiing iconcolor">
+        <div class="contact-info">
+            <i class="fas fa-map-marker-alt mt-4 fa-2x"></i>
             <p>
-                123 Main Street <br>
-                Cityville, State <br>
-                Country
+                233 Circle Street <br>
+                Douglas, Isle Of Man
             </p>
         </div>
-
-        <div class="dishSelection">
+        <div class="contact-info">
             <i class="fas fa-phone mt-4 fa-2x"></i>
-            <p>+44 07624 123456</p>
-        </div>
-
-        <div class="dishSelection">
+            <p>
+                Call Ahead:<br>
+                +44 07624 123456
+            </p>
+        </div>       
+        <div class="contact-info">
             <i class="fas fa-envelope mt-4 fa-2x"></i>
-            <p>info@mathukhaiche.com</p>
+            <p>
+                Email Us: <br>
+                info@mathukhaiche.com
+            </p>
+        </div>
+       
+        <div class="contact-info">
+            <i class="fas fa-clock mt-4 fa-2x"></i>
+            <p>
+                Open Hours: <br>
+                Monday-Saterday: 11am-10pm
+            </p>
         </div>
     </div>
 
-
-
-	<h2>Search</h2>
-	<form method="post">
-		<div>Search <input asp-for="Search" /> </div>
-		<button type="submit" asp-page-handler="Search">Submit</button>
-	</form>
-
+    <form id="contactForm" action="/Contact" class="formbox">
+    <div class="box-3">
+            <div class="btny btn-three" onclick="redirectToContact()">
+    <span>Futher Details</span>
+    </div>
+    </div>
+    </form>
 </section>
+
 
 @*End of adapted code *@

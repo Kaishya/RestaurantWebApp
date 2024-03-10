@@ -3,115 +3,109 @@
 @{
     ViewData["Title"] = "Contact Page";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
 
-<section class="section">
-<div class="text-center">
-    <h2 class="display-4">Contact Us </h2>
-        <p class="text-center w-responsive mx-auto ">
+    <!-- Add your stylesheets and other head elements here -->
+    <!-- Google Maps API script -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdbA3ppSAfodwiAmNKUt4K6c9O5FfC6do&callback=initMap"></script>
+</head>
+<body>
+
+    <div class="title">
+        <h2 class="pagetopper">Contact Us</h2>
+        <p class="text-center w-responsive mx-auto">
             Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
             a matter of hours to help you.
         </p>
-        <h2>@Model.SuccessMessage</h2>
-
-</div>
-</section>
-@* using  https://mdbootstrap.com/docs/b4/jquery/forms/contact/
- *@
-<!--Section: Contact v.2-->
+        <h3>@Model.SuccessMessage</h3>
+    </div>
 
     <div class="row">
-
-        <!--Grid column-->
         <div class="col-md-9 mb-md-0 mb-5">
-            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
-
-                <!--Grid row-->
+            <form id="contact-form" asp-page="/Contact" asp-page-handler="OnPost" method="post">
                 <div class="row">
-
-                    <!--Grid column-->
                     <div class="col-md-6">
-					<div class="md-form mb-0">
-						<label for="name" class="">Your name</label>
+                        <div class="md-form mb-0">
+                            <label for="name">Your name</label>
                             <input type="text" id="name" name="name" class="form-control">
-                            
                         </div>
                     </div>
-                    <!--Grid column-->
-                    <!--Grid column-->
                     <div class="col-md-6">
-					<div class="md-form mb-0">
-						<label for="email" class="">Your email</label>
+                        <div class="md-form mb-0">
+                            <label for="email">Your email</label>
                             <input type="text" id="email" name="email" class="form-control">
                         </div>
                     </div>
-                    <!--Grid column-->
-
                 </div>
-                <!--Grid row-->
-                <!--Grid row-->
                 <div class="row">
                     <div class="col-md-12">
-					<div class="md-form mb-0">
-						<label for="subject" class="">Subject of Message</label>
+                        <div class="md-form mb-0">
+                            <label for="subject">Subject of Message</label>
                             <input type="text" id="subject" name="subject" class="form-control">
                         </div>
                     </div>
                 </div>
-                <!--Grid row-->
-                <!--Grid row-->
                 <div class="row">
-
-                    <!--Grid column-->
                     <div class="col-md-12">
-
-					<div class="md-form">
-						<label for="message">Your message</label>
+                        <div class="md-form">
+                            <label for="message">Your message</label>
                             <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
                         </div>
-
                     </div>
                 </div>
-                <!--Grid row-->
-
-            </form>
-
-        <div class="text-center text-md-left">
-            <form method="post">
-                <!-- Your form fields here -->
-
-                <button type="submit" class="btn btn-primary">Send!</button>
+                <div class="text-center text-md-left">
+                    <form method="post">
+                        <button type="submit" class="btn btn-primary">Send!</button>
+                    </form>
+                </div>
+                <div class="status"></div>
             </form>
         </div>
 
-            <div class="status"></div>
-        </div>
-        <!--Grid column-->
-        <!--Grid column-->
         <div class="col-md-3 text-center">
-        <ul class="list-unstyled mb-0" style="color: #7aa48f;">
+            <ul class="list-unstyled mb-0 iconcolor">
                 <li>
                     <i class="fas fa-map-marker-alt fa-2x"></i>
-                <p>
-                    123 Main Street <br>
-                    Cityville, State <br>
-                    Country
-                </p>
-
+                    <p>
+                        223 Circle Street <br>
+                        Douglas <br>
+                       Isle of Man
+                    </p>
                 </li>
-
                 <li>
                     <i class="fas fa-phone mt-4 fa-2x"></i>
                     <p>+44 07624 123456</p>
                 </li>
-
                 <li>
                     <i class="fas fa-envelope mt-4 fa-2x"></i>
-                <p>info@mathukhaiche.com</p>
+                    <p>info@mathukhaiche.com</p>
                 </li>
             </ul>
         </div>
-        <!--Grid column-->
-
     </div>
 
-<!--Section: Contact v.2-->
+    <h3>Map</h3>
+    <div id="map"></div>
+
+    <script>
+        function initMap() {
+            var dumbo = { lat: 54.17162185745906, lng: -4.478756274878505 };
+            var mapOptions = {
+                center: dumbo,
+                zoom: 10
+            };
+            var googlemap = new google.maps.Map(document.getElementById("map"), mapOptions);
+            var marker = new google.maps.Marker({
+                position: dumbo,
+                map: googlemap
+            });
+        }
+    </script>
+
+</body>
+</html>

@@ -1,11 +1,11 @@
 ﻿@page
-@model RestaurantWebApp.Pages.Menu.IndexModel
+@model IndexModel
 
 @{
     ViewData["Title"] = "Admin Menu";
 }
 
-<h1>Admin Menu</h1>
+<h1 class="pagetopper">Admin Menu</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -15,22 +15,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FoodItem[0].Item_name)
+                Food Item
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FoodItem[0].Item_desc)
+                Item Description
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FoodItem[0].Available)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FoodItem[0].Vegetarian)
+               Vegan
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FoodItem[0].Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FoodItem[0].ImageData)
+                Image
             </th>
         </tr>
     </thead>

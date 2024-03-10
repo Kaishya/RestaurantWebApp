@@ -5,20 +5,20 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1 class="pagetopper">Details</h1>
 
 <div>
     <h4>FoodItem</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FoodItem.Item_name)
+            Name
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.FoodItem.Item_name)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FoodItem.Item_desc)
+            Description
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.FoodItem.Item_desc)
@@ -40,6 +40,23 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.FoodItem.Price)
+        </dd>
+             <dt class ="col-sm-2">
+            @Html.DisplayNameFor(model => model.FoodItem.ImageData)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                try
+                {
+                    <img class="square-menu" src="@string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(Model.FoodItem.ImageData))" alt="@Html.DisplayFor(model => model.FoodItem.ImageDescription)" />
+                }
+                catch
+                {
+                    <td>
+                        <img class="img-thumb" src="/Images/no-image.png" alt="No Image provided" />
+                    </td>
+                }
+            }
         </dd>
     </dl>
 </div>

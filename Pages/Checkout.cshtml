@@ -1,14 +1,16 @@
 ﻿@page
 @model RestaurantWebApp.Pages.CheckoutModel
 @{
-    ViewData["Title"] = "Checkout Basket";
+    ViewData["Title"] = "Basket";
 }
 
-<h1>@ViewData["Title"]</h1>
+<div class="title">
+    <h2 class="pagetopper">Basket</h2>
+</div>
 
 @if (Model.Items.Count == 0)
 {
-    <p>You do not have any items in your basket. Please Revisit the Menu.</p>
+    <p class="text-center">You do not have any items in your basket. Please Revisit the <a asp-area="" asp-page="/Menu/Menu">Menu</a>.</p>
 }
 else
 {
@@ -51,7 +53,16 @@ else
 @*         <button type="submit" asp-page-handler="Buy">Buy</button>
  *@    
     <form action="/Payment/">
-        <i class="bi bi-credit-card"></i>
-        <button type="submit">Pay</button>
+        <button type="submit">
+			<span class="bi bi-credit-card">Checkout </span>
+        </button>
     </form>
+
+    <form id="payForm" action="/Payment" class="formbox">
+            <div class="box-3">
+            <div class="btny btn-three" onclick="redirectToPay()">
+                <span class="bi bi-credit-card">Checkout </span>
+            </div>
+            </div>
+        </form>
 }

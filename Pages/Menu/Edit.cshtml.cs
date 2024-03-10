@@ -49,6 +49,8 @@ namespace RestaurantWebApp.Pages.Menu
                 return Page();
             }
 
+            var existingFoodItem = await _context.FoodItems.AsNoTracking().FirstOrDefaultAsync(m => m.ID == FoodItem.ID);
+
             foreach (var file in Request.Form.Files)
             {
                 if (file.Length > 0)
@@ -59,6 +61,12 @@ namespace RestaurantWebApp.Pages.Menu
                         FoodItem.ImageData = ms.ToArray();
                     }
                 }
+            }
+
+            // Check if a new image was uploaded, and if not, retain the existing image data
+            if (FoodItem.ImageData == null && existingFoodItem != null)
+            {
+                FoodItem.ImageData = existingFoodItem.ImageData;
             }
 
             _context.Attach(FoodItem).State = EntityState.Modified;
@@ -81,6 +89,7 @@ namespace RestaurantWebApp.Pages.Menu
 
             return RedirectToPage("./Index");
         }
+
 
 
 

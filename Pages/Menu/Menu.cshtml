@@ -11,61 +11,71 @@
 <div class="main">
 	<div class="title">
 		<h2 class="pagetopper">Our Menu</h2>
-		<p>a mix of traditional and street foods</p>
-		@* <form method="post">
-			<div>Search <input asp-for="Search" /> </div>
-			<button type="submit" asp-page-handler="Search">Submit</button>
-		</form> *@
-
+		<p>A mix of traditional and street foods</p>
+		<p><i class='fas fa-seedling fa-2xs vegan'></i> vegan</p>
 		<form id="form" class="formy" role="search" method="post" asp-page-handler="Search">
 			<input class="inputy" type="search" id="query" name="Search"
 				   placeholder="Search Food Items..."
 				   aria-label="Search through site content">
-			<button class="buttony" type="submit">Go!</button>
+			<button class="buttony" type="button" onclick="submitForm()">Go!</button>
 		</form>
+
+
 
 	</div>
 	<div class="foods">
 		@foreach (var item in Model.FoodItem)
 		{
-		//Start of adapted code Nahian, 2023
-		<div class="oneItem">
-				@if (item.ImageData != null && item.ImageData.Length > 0)
-				{
-					<img src="@($"data:image/jpg;base64,{Convert.ToBase64String(item.ImageData)}")" alt="@item.ImageDescription" />
-				}
-				else
-				{
-					<img class="img-thumb" src="/Images/no-image.png" alt="No Image provided" />
-				}
-			<div class="itemInfo"> 
-				<h3>@Html.DisplayFor(modelItem => item.Item_name)
-						<i class='fas fa-seedling fa-2xs vegan'></i>
-						<span>@Html.DisplayFor(modelItem => item.Price)</span>
-				</h3>
-					<p>@Html.DisplayFor(modelItem => item.Item_desc) </p>
+			if (item.Available == true)
+			{
+				//Start of adapted code Nahian, 2023
+				<div class="oneItem">
+					@if (item.ImageData != null && item.ImageData.Length > 0)
+					{
+						<img src="@($"data:image/jpg;base64,{Convert.ToBase64String(item.ImageData)}")" alt="@item.ImageDescription" />
+					}
+					else
+					{
+						<img class="img-thumb" src="/Images/no-image.png" alt="No Image provided" />
+					}
+					<div class="itemInfo">
 
-					@* <i class='fas fa-seedling fa-2x vegan'></i> *@
-					<i class="bi bi-fire"></i>
-					<form method="post">
-						@if (User.IsInRole("Member") || User.IsInRole("Admin"))
-						{
-							<button type="submit" asp-page-handler="Buy" asp-route-itemID="@item.ID" class="btn btn-outline-dark"><span class="bi bi-cart3"></span> Add To Cart</button>
+						<h3>@Html.DisplayFor(modelItem => item.Item_name)
+							@if (item.Vegetarian == true)
+							{
+								<i class='fas fa-seedling fa-2xs vegan'></i>
+							}
+							<span>@Html.DisplayFor(modelItem => item.Price)</span>
+						</h3>
+						<p>@Html.DisplayFor(modelItem => item.Item_desc) </p>
 
-						}
-						else
-						{
-							<a href="/Identity/Account/Login" class="btn btn-outline-dark float-right">
-								<span class="bi bi-cart3"></span> Add To Cart (Login required)
-							</a>
+						@* <i class='fas fa-seedling fa-2x vegan'></i> *@
+						<i class="bi bi-fire"></i>
+						<form method="post">
+							@if (User.IsInRole("Member"))
+							{
+								<button type="submit" asp-page-handler="Buy" asp-route-itemID="@item.ID" class="btn btn-outline-dark">
+									<span class="bi bi-cart3"></span> Add To Cart
+								</button>
+							}
+							else if (User.IsInRole("Admin"))
+							{
+								<p class="text-muted">Admins don't have access to add items to the cart.</p>
+							}
+							else
+							{
+								<a href="/Identity/Account/Login" class="btn btn-outline-dark float-right">
+									<span class="bi bi-cart3"></span> Add To Cart (Login required)
+								</a>
+							}
 
-						}
-					</form>
+						</form>
 
-					
-			</div>
-		</div>
-		//end of adapted code
-	}
+
+					</div>
+				</div>
+				//end of adapted code
+			}
+		}
 	</div>
 </div>

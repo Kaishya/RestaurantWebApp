@@ -45,3 +45,20 @@ clearIcon.addEventListener("click", () => {
     searchBar.value = "";
     clearIcon.style.visibility = "hidden";
 })
+
+
+
+function redirectToMenu() {
+        document.getElementById("menuForm").submit();
+    }
+function redirectToContact() {
+    document.getElementById("contactForm").submit();
+}
+function redirectToPay() {
+    document.getElementById("payForm").submit();
+}
+
+function submitForm() {
+    document.getElementById("form").submit();
+}
+

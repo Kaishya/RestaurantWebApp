@@ -33,6 +33,23 @@ namespace RestaurantWebApp.Pages
 
         public async Task OnGetAsync()
         {
+            var user = await _userManager.GetUserAsync(User);
+            CheckoutCustomer customer = await _db.CheckoutCustomers.FindAsync(user.Email);
+
+            Items = _db.CheckoutItems.FromSqlRaw(
+                "SELECT FoodItem.ID, FoodItem.Price, " +
+                "FoodItem.Item_name, " +
+                "BasketItems.BasketID, BasketItems.Quantity " +
+                "FROM FoodItem INNER JOIN BasketItems " +
+                "On FoodItem.ID = BasketItems.StockID " +
+                "WHERE BasketID = {0}", customer.BasketID
+                ).ToList();
+
+            foreach (var item in Items)
+            {
+                Total += (item.Quantity * item.Price);
+            }
+            AmountPayable = (long)Total;
             await OnPostBuyAsync(); // Call the OnPostBuyAsync method when navigating to the Success page
         }
 
