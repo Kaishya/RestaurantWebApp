@@ -38,7 +38,7 @@ li {
     margin-top:2%
 }
 
-/*Using this tutorial for the main text https://www.w3schools.com/howto/howto_css_cutout_text.asp*/
+/*Code adapted from W3schools, 2023 */
 .text {
     background-color: white;
     color: darkgreen; /*either darkolivegreen or dark blue*/
@@ -49,8 +49,6 @@ li {
     width: 70%;
     text-align: center;
     position: absolute;
-   /* top: 25%;
-    left: 50%;*/
    top: 25vw;
    left:50vw;
     transform: translate(-50%, -60%);
@@ -58,11 +56,11 @@ li {
     z-index: 2;
     border-radius: 25px 5px 25px 5px;
 }
+/*end of adapted code*/
 
 
 
-
-/* Using this tutorial to make the slide animation https://unused-css.com/blog/css-only-background-slider/*/
+/* Code Adapted from UnusedCSS, 2024*/
 .slider {
     overflow: hidden;
     background-size: cover;
@@ -71,8 +69,6 @@ li {
     height: 35vw;
     background-position: center center;
     z-index: 0;
-    /*    border: double 4px black;
-*/
 }
 
 .slider .slide {
@@ -134,19 +130,19 @@ li {
     text-align: center;
     margin-bottom: 50px;
 }
+/*end of adapted code*/
+
+
 
 .contact-info {
-    margin: 0 20px; /* Adjust the margin between items as needed */
+    margin: 0 20px; 
 }
 
-/*Specials Section*/
-/*From tutorial   https://www.youtube.com/watch?v=Q3MPM7fBO5U*/ 
+/*Adapted from Muhib, 2023*/ 
 .dishSelection{
     text-align:center;
     margin-bottom: 50px;
 }
-
-
 
 .dishSelection h2{
     font-size: 2rem;
@@ -181,7 +177,6 @@ li {
 }
 
 .dishContentBottom {
-/*    display: fixed;*/
     align-items: center;
     justify-content: space-between;
     margin-top: 10px
@@ -211,30 +206,30 @@ li {
 
 @media (max-width: 768px) {
     .dishWrapper {
-        flex-direction: column; /* Stack items on smaller screens */
+        flex-direction: column; 
         align-items: center;
     }
 
   
     .dishItem {
-        width: 100%; /* Reset width for larger screens */
+        width: 100%; 
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 1.5rem; /* Add some space between stacked items */
+        margin-bottom: 1.5rem; 
     }
 
     .dishContent {
-        width: 100%; /* Full width for larger screens */
-        text-align: center; /* Adjust text alignment as needed */
+        width: 100%; 
+        text-align: center; 
     }
         .dishContent h3 {
-            font-size: 2rem; /* Adjusted font size for smaller screens */
+            font-size: 2rem; 
         }
 
         .dishContentBottom {
-            flex-direction: row; /* Align items in a row for larger screens */
+            flex-direction: row;
             justify-content: space-between;
             width: 100%;
             align-items: center;
@@ -242,9 +237,9 @@ li {
     .addToCart {
         width: 20px;
         height: 20px;
-        display: flex; /* Add flex display to center items */
-        justify-content: center; /* Center items horizontally */
-        align-items: center; /* Center items vertically */
+        display: flex; 
+        justify-content: center; 
+        align-items: center;
         background: white;
         cursor: pointer;
         border-radius: 5px;
@@ -271,17 +266,19 @@ li {
     }
 
 
-/* Add this to your existing CSS or stylesheet */
+/*end of adapted code*/
 
+
+/*About Us CSS*/
 .story-heading {
     font-size: 2rem;
-    color: #333; /* Set your preferred color */
+    color: #333; 
 }
 
 .story-paragraph {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #555; /* Set your preferred color */
+    color: #555; 
     margin-top: 10px;
 }
 
@@ -325,15 +322,16 @@ li {
         color: white;
         background-color: #B6D8A4;
         padding: 5px;
-        /*  margin:5px;*/
         border-radius: 4px;
     }
 
     .circle-add:before {
         content: '\F244';
     }
-    /*code adapted from Nahian, 2023*/
+/*About Us End*/
 
+
+  /*code adapted from Nahian, 2023*/
     .main {
         width: 1140px;
         margin: 0 auto;
@@ -433,14 +431,13 @@ li {
             }
     }
 
-
-
     .square-menu {
         width: 100px;
         height: 100px;
         object-fit: cover;
     }
-    /*end of adapted codd*/
+  /*end of adapted codd*/
+
 
     .pagetopper {
         margin-top: 2vw;
@@ -523,8 +520,8 @@ li {
         left: 0;
         bottom: 0;
         width: 100%;
-        height: 4%;
-        background: linear-gradient(180deg,#d9e3d3, #e7f0e1); /* Linear gradient background */
+        height: 5%;
+        background: linear-gradient(180deg,#d9e3d3, #e7f0e1); 
     }
 
 
@@ -545,11 +542,7 @@ li {
 
 
 
-    /* 
-========================
-      BUTTON THREE
-========================
-*/ /*https://codepen.io/natalia-reshetnikova */
+/* Adapted from Reshetnikova, ny*/
     .formbox {
         display: flex;
         justify-content: center;
@@ -614,17 +607,13 @@ li {
             transform: scale(1,1);
         }
 
-
-
     .iconcolor {
         color: #4d6b5c;
     }
+/*End of Adapted code*/
 
-
-
-    @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
-
-
+/*Code adapted from: */
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
 
     header {
         background-image: linear-gradient(180deg, #6c916c, #76AB8F);
@@ -717,8 +706,9 @@ li {
     #map {
         width: 100%;
         height: 400px;
-        background-color: grey;
     }
+
+
 
     @media only screen and (max-width: 768px) {
         nav {
@@ -739,23 +729,19 @@ li {
             }
     }
 
-    /* Custom styling for the button */
-    /* Custom styling for the button */
+    /*End of Adapted Code*/
+
     .styled-button {
-        background-color: rgba(0, 123, 255, 0.5); /* Set your desired transparent background color */
-        color: #fff; /* Set your desired text color */
-        border: 1px solid #007bff; /* Set your desired border color */
-        padding: 10px 20px; /* Set your desired padding */
+        background-color: rgba(0, 123, 255, 0.5);
+        color: #fff; 
+        border: 1px solid #007bff; 
+        padding: 10px 20px;
         cursor: pointer;
-        display: flex; /* Use flexbox to center the content horizontally and vertically */
+        display: flex;
         justify-content: center;
         align-items: center;
-        /* Add any additional styling properties as needed */
     }
-
-        /* Custom styling for button hover effect (optional) */
         .styled-button:hover {
-            background-color: rgba(0, 123, 255, 0.7); /* Set your desired hover background color with transparency */
-            border-color: #0056b3; /* Set your desired hover border color */
-            /* Add any additional styling properties for hover effect */
+            background-color: rgba(0, 123, 255, 0.7); 
+            border-color: #0056b3; 
         }

@@ -49,14 +49,7 @@ else
                 }
             </tbody>
         </table>
-        <h2>Order Total: @Model.Total.ToString("C")</h2>
-@*         <button type="submit" asp-page-handler="Buy">Buy</button>
- *@    
-    <form action="/Payment/">
-        <button type="submit">
-			<span class="bi bi-credit-card">Checkout </span>
-        </button>
-    </form>
+        <h2>Order Total: @Model.Total.ToString("C")</h2>   
 
     <form id="payForm" action="/Payment" class="formbox">
             <div class="box-3">

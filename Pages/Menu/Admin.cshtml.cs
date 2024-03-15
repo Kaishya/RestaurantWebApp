@@ -26,13 +26,6 @@ namespace RestaurantWebApp.Pages.Menu
             _context = context;
         }
 
-
-
-        // public IndexModel(RestaurantWebApp.Data.RestaurantWebAppContext context)
-        //{
-        //    _context = context;
-        // }
-
         public IList<FoodItem> FoodItem { get; set; } = default!;
 
         public async Task OnGetAsync()

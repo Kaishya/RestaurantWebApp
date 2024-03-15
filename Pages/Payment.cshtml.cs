@@ -56,7 +56,6 @@ public class PaymentModel : PageModel
 
     public IActionResult OnPost()
     {
-        // Perform any additional logic here, if needed
         return RedirectToPage("/Success");
     }
 }

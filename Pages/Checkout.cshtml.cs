@@ -82,7 +82,6 @@ namespace RestaurantWebApp.Pages
 
             if (itemToUpdate != null)
             {
-                // Update the quantity
                 itemToUpdate.Quantity = quantity;
 
                 _db.BasketItems.Update(itemToUpdate);

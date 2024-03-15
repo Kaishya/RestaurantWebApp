@@ -2,12 +2,15 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home Page";
-    <link type="image/png" sizes="16x16" rel="icon" href=".../icons8-house-16.png">
-    <link type="image/png" sizes="96x96" rel="icon" href=".../icons8-house-96.png">
     var isMemberRole = User.IsInRole("Member");
     var isAdminRole = User.IsInRole("Admin");
 }
-
+<head>
+    <title>@ViewData["Title"]</title>
+    <link type="image/png" sizes="16x16" rel="icon" href=".../icons8-house-16.png">
+    <link type="image/png" sizes="96x96" rel="icon" href=".../icons8-house-96.png">
+</head>
+<body> 
 <div class="text-center">
 
     <div class="text">Mathu Khai Che</div>
@@ -82,7 +85,7 @@ Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@
             </div>
             </div>
         </div>
-
+    @*End of adapted code *@
         <form id="menuForm" action="/Menu/Menu" class="formbox">
         <div class="box-3">
             <div class="btny btn-three" onclick="redirectToMenu()">
@@ -92,13 +95,6 @@ Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@
     </form>
 
 </section>
-
-    
-
-
-    
-
-
 
 
 
@@ -115,17 +111,7 @@ Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@
             Mathu Khai Che is more than a restaurant; it's a celebration of culture, tradition, and the joy of sharing delicious
             meals with friends and family. Join us on this culinary adventure, immerse yourself in the vibrant spirit of Gujarat, 
             and make Mathu Khai Che a part of your own story.
-        </p>
-
-        @* <form id="aboutForm" action="/About" class="formbox">
-            <div class="box-3">
-                <div class="btny btn-three" onclick="redirectToAbout()">
-                    <span>More About Us</span>
-                </div>
-            </div>
-        </form> *@
-
-        
+        </p>        
     </div>
 
 </section>
@@ -151,7 +137,7 @@ Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@
             <i class="fas fa-envelope mt-4 fa-2x"></i>
             <p>
                 Email Us: <br>
-                info@mathukhaiche.com
+                mathukhaicheiom@gmail.com
             </p>
         </div>
        
@@ -159,7 +145,7 @@ Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@
             <i class="fas fa-clock mt-4 fa-2x"></i>
             <p>
                 Open Hours: <br>
-                Monday-Saterday: 11am-10pm
+                Monday-Saturday: 11am-10pm
             </p>
         </div>
     </div>
@@ -174,4 +160,4 @@ Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@
 </section>
 
 
-@*End of adapted code *@
+</body>

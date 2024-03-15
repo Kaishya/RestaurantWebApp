@@ -30,7 +30,7 @@ allSections.forEach((section) => {
 //end of adapted code
 
 
-const clearIcon = document.querySelector(".clear-icon");
+/*const clearIcon = document.querySelector(".clear-icon");
 const searchBar = document.querySelector(".search");
 
 searchBar.addEventListener("keyup", () => {
@@ -44,7 +44,7 @@ searchBar.addEventListener("keyup", () => {
 clearIcon.addEventListener("click", () => {
     searchBar.value = "";
     clearIcon.style.visibility = "hidden";
-})
+})*/
 
 
 
@@ -62,3 +62,14 @@ function submitForm() {
     document.getElementById("form").submit();
 }
 
+
+
+/*var map = L.map('map').setView([51.505, -0.09], 13);
+*/
+
+var map = L.map('map').setView([54.17162185745906, -4.478756274878505], 14);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+var marker = L.marker([54.17162185745906, -4.478756274878505]).addTo(map);
