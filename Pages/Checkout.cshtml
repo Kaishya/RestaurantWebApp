@@ -6,11 +6,15 @@
 
 <div class="title">
     <h2 class="pagetopper">Basket</h2>
+    <a asp-page="/UserOrderHistory">
+        <span class="bi bi-archive"> See Order History</span>
+    </a>
 </div>
 
 @if (Model.Items.Count == 0)
 {
     <p class="text-center">You do not have any items in your basket. Please Revisit the <a asp-area="" asp-page="/Menu/Menu">Menu</a>.</p>
+
 }
 else
 {
@@ -58,4 +62,7 @@ else
             </div>
             </div>
         </form>
+
+
+
 }

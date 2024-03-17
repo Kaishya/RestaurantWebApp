@@ -68,9 +68,10 @@ namespace RestaurantWebApp.Pages
 
 			return RedirectToPage("/Checkout");
 		}
+        
 
 
-		[HttpPost]
+        [HttpPost]
         public async Task<IActionResult> OnPostUpdateQuantityAsync(int itemId, int quantity)
         {
             quantity = (quantity >= 101) ? 100 : quantity;

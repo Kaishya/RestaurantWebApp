@@ -1,0 +1,51 @@
+﻿@page
+@model RestaurantWebApp.Pages.UserOrderHistoryModel
+@{
+    ViewData["Title"] = "Order History";
+}
+
+<h2 class="pagetopper">Order History</h2>
+
+@if (Model.OrderHistory == null || !Model.OrderHistory.Any())
+{
+    <p>No order history available.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Items</th>
+                <th>Buy</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var (order, index) in Model.OrderHistory.Select((value, i) => (value, i + 1))) 
+            {
+                @if (Model.OrderItems.ContainsKey(order.OrderNo) && Model.OrderItems[order.OrderNo].Any())
+                {
+                    <tr>
+                        <td>@index</td> 
+                        <td>
+                            <ul>
+                                @foreach (var item in Model.OrderItems[order.OrderNo])
+                                {
+                                    <li class="orderLi">@item.Quantity x @item.ItemName</li>
+                                }
+                            </ul>
+                        </td>
+                        <td>
+                            <form method="post">
+                                <input type="hidden" name="orderNo" value="@order.OrderNo" />
+                                <button type="submit" asp-page-handler="AddOrderToCart" class="btn btn-outline-dark">
+                                    <span class="bi bi-cart3"></span> Add To Cart
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
