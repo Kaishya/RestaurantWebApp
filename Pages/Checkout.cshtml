@@ -55,13 +55,13 @@ else
         </table>
         <h2>Order Total: @Model.Total.ToString("C")</h2>   
 
-    <form id="payForm" action="/Payment" class="formbox">
-            <div class="box-3">
-            <div class="btny btn-three" onclick="redirectToPay()">
-                <span class="bi bi-credit-card">Checkout </span>
-            </div>
-            </div>
-        </form>
+ 
+
+    <form id="menuForm" asp-area="" asp-page="/Payment" method="get">
+        <button type="submit" class="custom-btn">
+            <span class="bi bi-credit-card">Checkout </span>
+        </button>
+    </form>
 
 
 

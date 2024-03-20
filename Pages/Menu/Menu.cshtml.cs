@@ -8,7 +8,6 @@ using RestaurantWebApp.Models;
 
 namespace RestaurantWebApp.Pages.Menu
 {
-   // [Authorize(Roles = "Member")]
 
     public class MenuModel : PageModel
     {
@@ -23,12 +22,6 @@ namespace RestaurantWebApp.Pages.Menu
             _context = context;
         }
 
-
-
-		// public IndexModel(RestaurantWebApp.Data.RestaurantWebAppContext context)
-		//{
-		//    _context = context;
-		// }
 
 		public IList<FoodItem> FoodItem { get; set; } = default!;
 
@@ -71,7 +64,7 @@ namespace RestaurantWebApp.Pages.Menu
 				return string.Empty;
 			}
 
-			input = input.Replace("'", "''");
+			input = input.Replace("'", "''"); /*so users cant accidentally do sql tests */
 
 			string allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_ ";
 

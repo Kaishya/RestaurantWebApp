@@ -6,8 +6,6 @@
 }
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
-@* <h1>@ViewData["Title"]</h1> *@
-
 <div class="main">
 	<div class="title">
 		<h2 class="pagetopper">Our Menu</h2>
@@ -24,6 +22,8 @@
 
 	</div>
 	<div class="foods">
+		@if (Model.FoodItem != null){
+
 		@foreach (var item in Model.FoodItem)
 		{
 			if (item.Available == true)
@@ -48,11 +48,8 @@
 							<span>@Html.DisplayFor(modelItem => item.Price)</span>
 						</h3>
 						<p>@Html.DisplayFor(modelItem => item.Item_desc) </p>
-
-						@* <i class='fas fa-seedling fa-2x vegan'></i> *@
-						<i class="bi bi-fire"></i>
 						<form method="post">
-							@if (User.IsInRole("Member"))
+							@if (User.IsInRole("Member") && User.Identity.IsAuthenticated)
 							{
 								<button type="submit" asp-page-handler="Buy" asp-route-itemID="@item.ID" class="btn btn-outline-dark">
 									<span class="bi bi-cart3"></span> Add To Cart
@@ -64,9 +61,9 @@
 							}
 							else
 							{
-								<a href="/Identity/Account/Login" class="btn btn-outline-dark float-right">
-									<span class="bi bi-cart3"></span> Add To Cart (Login required)
-								</a>
+								<button type="submit" asp-area="Identity" asp-page="/Account/Login" class="btn btn-outline-dark">
+									<span class="bi bi-cart3"></span> Add To Cart (Login Required)
+								</button>
 							}
 
 						</form>
@@ -76,6 +73,12 @@
 				</div>
 				//end of adapted code
 			}
+		}
+
+		}
+		else
+		{
+			<p>No food items available.</p>
 		}
 	</div>
 </div>

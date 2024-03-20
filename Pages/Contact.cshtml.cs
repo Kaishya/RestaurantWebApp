@@ -42,7 +42,7 @@ namespace RestaurantWebApp.Pages
 
                     MailMessage mailMessage = new MailMessage();
                     mailMessage.From = new MailAddress("mathukhaicheiom@gmail.com", "MathuKhaiChe Website Enquiry");
-                    mailMessage.To.Add(new MailAddress("mathukhaicheiom@gmail.com"));
+                    mailMessage.To.Add(new MailAddress("mathukhaicheiom@gmail.com")); /*Sends a real email*/
 
                     mailMessage.CC.Add(new MailAddress(customerEmail));
                     mailMessage.Body = "Hello,  \n" +

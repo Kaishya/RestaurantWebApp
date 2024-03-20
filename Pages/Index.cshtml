@@ -29,8 +29,7 @@
 
 @* Specials Section *@
 @*  
-Start of adapted code, Muhib, 2022
-Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@
+Start of adapted code, Muhib, 2022*@
 
     <section class="section">
         <div class="container">
@@ -72,9 +71,9 @@ Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@
                                 }
                                 else
                                 {
-                                    <a href="/Identity/Account/Login" class="btn btn-outline-dark float-right">
-                                        <span class="bi bi-cart3"></span>
-                                    </a>
+                                        <button type="submit" asp-area="Identity" asp-page="/Account/Login" class="btn btn-outline-dark float-right">
+                                            <span class="bi bi-cart3"></span> 
+                                        </button>
                                 }
 
                             </form>
@@ -86,13 +85,13 @@ Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@
             </div>
         </div>
     @*End of adapted code *@
-        <form id="menuForm" action="/Menu/Menu" class="formbox">
-        <div class="box-3">
-            <div class="btny btn-three" onclick="redirectToMenu()">
-                <span>Go To Menu!</span>
-            </div>
-        </div>
-    </form>
+        <form id="menuForm" asp-area="" asp-page="/Menu/Menu" method="get">
+            <button type="submit" class="custom-btn">
+                <span>Our Menu!</span>
+            </button>
+        </form>
+
+    
 
 </section>
 
@@ -150,12 +149,12 @@ Using a tutorial for the outline   https://www.youtube.com/watch?v=Q3MPM7fBO5U*@
         </div>
     </div>
 
-    <form id="contactForm" action="/Contact" class="formbox">
-    <div class="box-3">
+    <form id="contactForm" asp-page="/Contact" class="formbox">
+        <div class="box-3">
             <div class="btny btn-three" onclick="redirectToContact()">
-    <span>Futher Details</span>
-    </div>
-    </div>
+            <span>Futher Details</span>
+            </div>
+        </div>
     </form>
 </section>
 

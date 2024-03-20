@@ -3,8 +3,10 @@
 @{
     ViewData["Title"] = "Buy Items:";
 }
+<div class="margintop">
+    <h1 class="pagetoper">@ViewData["Title"]</h1>
 
-<h1>@ViewData["Title"]</h1>
+</div>
 
 <form method="post">
     @Html.AntiForgeryToken()
@@ -33,7 +35,7 @@
         </tbody>
     </table>
     <h2>Order Total: @Model.Total.ToString("C")</h2>
-
+    @* implements stripe *@
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="@Model.StripePublishableKey"
             data-amount="@Model.TotalAmountInCents"

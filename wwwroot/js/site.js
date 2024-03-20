@@ -30,27 +30,11 @@ allSections.forEach((section) => {
 //end of adapted code
 
 
-/*const clearIcon = document.querySelector(".clear-icon");
-const searchBar = document.querySelector(".search");
-
-searchBar.addEventListener("keyup", () => {
-    if (searchBar.value && clearIcon.style.visibility != "visible") {
-        clearIcon.style.visibility = "visible";
-    } else if (!searchBar.value) {
-        clearIcon.style.visibility = "hidden";
-    }
-});
-
-clearIcon.addEventListener("click", () => {
-    searchBar.value = "";
-    clearIcon.style.visibility = "hidden";
-})*/
-
 
 
 function redirectToMenu() {
-        document.getElementById("menuForm").submit();
-    }
+    document.getElementById("menuForm").submit();
+}
 function redirectToContact() {
     document.getElementById("contactForm").submit();
 }
@@ -62,10 +46,6 @@ function submitForm() {
     document.getElementById("form").submit();
 }
 
-
-
-/*var map = L.map('map').setView([51.505, -0.09], 13);
-*/
 
 var map = L.map('map').setView([54.17162185745906, -4.478756274878505], 14);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {

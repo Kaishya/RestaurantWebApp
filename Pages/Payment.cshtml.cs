@@ -27,7 +27,7 @@ public class PaymentModel : PageModel
         _userManager = userManager;
     }
 
-    public string StripePublishableKey => Configuration["Stripe:PublishableKey"];
+    public string StripePublishableKey => Configuration["Stripe:PublishableKey"]; /*in appsetting, publishable key is set*/
 
     public decimal TotalAmount => Items.Sum(item => item.Quantity * item.Price);
 

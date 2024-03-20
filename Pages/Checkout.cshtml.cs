@@ -74,7 +74,7 @@ namespace RestaurantWebApp.Pages
         [HttpPost]
         public async Task<IActionResult> OnPostUpdateQuantityAsync(int itemId, int quantity)
         {
-            quantity = (quantity >= 101) ? 100 : quantity;
+            quantity = (quantity >= 101) ? 100 : quantity; /* only allows a product to be bought 10 times per user*/
 
             var user = await _userManager.GetUserAsync(User);
             CheckoutCustomer customer = await _db.CheckoutCustomers.FindAsync(user.Email);

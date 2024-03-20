@@ -466,7 +466,6 @@ li {
         flex-direction: row;
         align-items: center;
         margin-left: 70%;
-        position: center;
     }
 
     .inputy {
@@ -748,3 +747,21 @@ li {
 .orderLi {
     color:black;
 }
+
+#menuForm {
+    text-align: center; /* Center the form content */
+}
+
+.custom-btn {
+    background-color: #4d6b5c; /* Set the background color */
+    color: white; /* Set the text color */
+    padding: 10px 20px; /* Add padding to the button */
+    border: none; /* Remove border */
+    cursor: pointer; /* Change cursor on hover */
+    font-size: 16px; /* Set font size */
+    border-radius: 5px; /* Add border radius */
+}
+
+    .custom-btn:hover {
+        background-color: #3b5242; /* Darken the background color on hover */
+    }
